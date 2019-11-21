@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?BackGroundColorWhite"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/rdGroupReminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_15sdp">
+
+        <RadioButton
+            android:id="@+id/rdb_none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:checked="true"
+            android:text="None"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_same_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Same Day"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_1_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="One Day before"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_2_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Two Days before"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_3_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Three days before"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+    </RadioGroup>
+</LinearLayout>

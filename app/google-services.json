@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "771334750692",
+    "firebase_url": "https://everyrupee-6b1d5.firebaseio.com",
+    "project_id": "everyrupee-6b1d5",
+    "storage_bucket": "everyrupee-6b1d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771334750692:android:817f2c9eb5fed9442c07f1",
+        "android_client_info": {
+          "package_name": "com.everyrupee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771334750692-oq9re7mmr7rb2lpm1pemhjodnfn7l8na.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvbgAGcQtkrFytJIKT0dBjhxmIgayKlHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771334750692-oq9re7mmr7rb2lpm1pemhjodnfn7l8na.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

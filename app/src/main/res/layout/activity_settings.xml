@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?WindowBackGroundColor"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        tools:context="com.everyrupee.com.accountmanager.ui.setting.SettingsActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="0dp">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?PrimaryColor"
+                    app:title="Setting"
+                    app:titleTextColor="@color/colorAlwaysWhite" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBackUpNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_14sdp"
+                android:text="Backup Now"
+                android:textColor="?TextTitleColor"
+                android:textSize="@dimen/_13ssp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="#cccccc"
+                android:visibility="gone"/>
+
+            <RelativeLayout
+                android:id="@+id/layoutDarkMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="@dimen/_14sdp">
+
+                <TextView
+                    android:id="@+id/textVisew1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/switchDarkMode"
+                    android:text="Dark Mode"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="?TextTitleColor"
+                    android:textSize="@dimen/_13ssp" />
+
+                <TextView
+                    android:id="@+id/textVisew2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textVisew1"
+                    android:layout_toLeftOf="@+id/switchDarkMode"
+                    android:text="Enable dark theme"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorDarkSubTitle"
+                    android:textSize="@dimen/_12ssp" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchDarkMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="#cccccc" />
+
+            <RelativeLayout
+                android:id="@+id/layoutPasscode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="@dimen/_14sdp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textVisew3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/switchPasscode"
+                    android:text="PassCode"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="?TextTitleColor"
+                    android:textSize="@dimen/_13ssp" />
+
+                <TextView
+                    android:id="@+id/textVisew4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textVisew3"
+                    android:layout_toLeftOf="@+id/switchPasscode"
+                    android:text="Enable/Disable Passcode"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorDarkSubTitle"
+                    android:textSize="@dimen/_12ssp" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchPasscode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="#cccccc"
+                android:visibility="gone"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChangePassCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_14sdp"
+                android:text="Change PassCode"
+                android:textColor="?TextTitleColor"
+                android:textSize="@dimen/_13ssp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

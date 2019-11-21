@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?BackGroundColorWhite">
+
+    <RadioGroup
+        android:id="@+id/rdGroupRecurrence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_15sdp">
+
+        <RadioButton
+            android:id="@+id/rdb_none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:checked="true"
+            android:text="None"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_daily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Daily"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_mon_to_friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Monday to Friday"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Every Saturday"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Every Sunday"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_sat_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Saturday and Sunday"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Every Week"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_2_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Every 2 week"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/rdb_monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Every Month"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_13ssp" />
+
+    </RadioGroup>
+
+</androidx.core.widget.NestedScrollView>

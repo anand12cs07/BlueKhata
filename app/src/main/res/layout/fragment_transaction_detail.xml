@@ -1,0 +1,61 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?WindowBackGroundColor"
+        tools:context="com.everyrupee.com.accountmanager.ui.dashboard.home.homedetails.HomeDetailFragment">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/card_daily_detail"
+            android:layout_margin="@dimen/_8sdp"
+            app:cardBackgroundColor="?WindowBackGroundColor"
+            app:cardElevation="0dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/_8sdp"
+                android:paddingRight="@dimen/_8sdp">
+
+                <com.everyrupee.utils.RecyclerViewEmptySupport
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layoutAnimation="@anim/layout_anim_fall_down" />
+
+                <RelativeLayout
+                    android:id="@+id/img_empty"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_empty1"
+                        android:layout_width="@dimen/_205sdp"
+                        android:layout_height="@dimen/_195sdp"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/_40sdp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/ic_empty_list" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/img_empty1"
+                        android:layout_centerHorizontal="true"
+                        android:text="No Transaction Found..."
+                        android:textColor="?TextTitleColor"
+                        android:textSize="@dimen/_12ssp" />
+                </RelativeLayout>
+
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</layout>

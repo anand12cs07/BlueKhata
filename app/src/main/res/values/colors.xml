@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryLight">#075fcd</color>
+    <color name="colorPrimaryDarkLight">#0457be</color>
+    <color name="colorPrimaryDark">#075fcd</color>
+    <color name="colorPrimaryDarkDark">#0457be</color>
+    <color name="colorAccent">#ba2f39</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="colorWindowBackground">#f2f2f2</color>
+    <color name="colorDarkTitle">#333333</color>
+
+    <color name="colorGrey">#aaaaaa</color>
+    <color name="colorLightGrey">#999999</color>
+    <color name="colorLighterGrey">#eeeeee</color>
+    <color name="colorDarkSubTitle">#666666</color>
+    <color name="colorAlwaysWhite">#ffffff</color>
+    <color name="colorRoseRed">#d50000</color>
+    <color name="colorGreen">#388e3c</color>
+
+
+
+    <color name="bright_pink">#1A8FE3</color>
+    <color name="red">#f6bd3a</color>
+    <color name="orange">#e19c83</color>
+    <color name="yellow">#63b48c</color>
+    <color name="chartreuse">#8EE3EF</color>
+    <color name="green">#eb4132</color>
+    <color name="spring_green">#31e5b6</color>
+    <color name="cyan">#A1887F</color>
+    <color name="azure">#ff8159</color>
+    <color name="blue">#D7B14F</color>
+    <color name="violet">#78909C</color>
+    <color name="magenta">#CBFF4D</color>
+
+    <color name="bright_pink1">#08BDBD</color>
+    <color name="red1">#6dc260</color>
+    <color name="orange1">#38cf38</color>
+    <color name="yellow1">#1D70A2</color>
+    <color name="chartreuse1">#4444bf</color>
+    <color name="green1">#18FFFF</color>
+    <color name="spring_green1">#f5e57a</color>
+    <color name="cyan1">#d3ed38</color>
+    <color name="azure1">#6170c4</color>
+    <color name="blue1">#e25988</color>
+    <color name="violet1">#C2B97F</color>
+    <color name="magenta1">#09BC8A</color>
+
+    <color name="bright_pink2">#03dac5</color>
+    <color name="red2">#2196F3</color>
+    <color name="orange2">#f56156</color>
+    <color name="yellow2">#4FC3F7</color>
+    <color name="chartreuse2">#ed9292</color>
+    <color name="green2">#BA68C8</color>
+    <color name="spring_green2">#009688</color>
+    <color name="cyan2">#b6e4e0</color>
+    <color name="azure2">#02d97e</color>
+    <color name="blue2">#FFEB3B</color>
+    <color name="violet2">#673AB7</color>
+    <color name="magenta2">#fc416e</color>
+
+    <array name="rainbow">
+        <item>@color/bright_pink</item>
+        <item>@color/red</item>
+        <item>@color/orange</item>
+        <item>@color/yellow</item>
+        <item>@color/chartreuse</item>
+        <item>@color/green</item>
+        <item>@color/spring_green</item>
+        <item>@color/cyan</item>
+        <item>@color/azure</item>
+        <item>@color/blue</item>
+        <item>@color/violet</item>
+        <item>@color/magenta</item>
+
+        <item>@color/bright_pink1</item>
+        <item>@color/red1</item>
+        <item>@color/spring_green1</item>
+        <item>@color/yellow1</item>
+        <item>@color/chartreuse1</item>
+        <item>@color/green1</item>
+        <item>@color/chartreuse2</item>
+        <item>@color/green2</item>
+        <item>@color/spring_green2</item>
+        <item>@color/cyan2</item>
+        <item>@color/orange1</item>
+        <item>@color/cyan1</item>
+
+        <item>@color/azure1</item>
+        <item>@color/blue1</item>
+        <item>@color/violet1</item>
+        <item>@color/magenta1</item>
+        <item>@color/bright_pink2</item>
+        <item>@color/red2</item>
+        <item>@color/orange2</item>
+        <item>@color/yellow2</item>
+        <item>@color/azure2</item>
+        <item>@color/blue2</item>
+        <item>@color/violet2</item>
+        <item>@color/magenta2</item>
+    </array>
+</resources>

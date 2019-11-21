@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_tags"
+        android:icon="@drawable/ic_tags"
+        android:title="Tags"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/nav_upcoming"
+        android:icon="@drawable/ic_upcoming"
+        android:title="Upcoming Transactions"
+        app:showAsAction="always" />
+
+    <!--<item-->
+        <!--android:id="@+id/nav_recursive"-->
+        <!--android:icon="@drawable/ic_recursive"-->
+        <!--android:title="Recursive Transactions"-->
+        <!--app:showAsAction="always" />-->
+
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"
+        app:showAsAction="always" />
+
+    <item android:title="Others">
+        <menu>
+            <item
+                android:id="@+id/nav_rateus"
+                android:icon="@drawable/ic_star"
+                android:title="Rate Us" />
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share"
+                android:title="Share Now" />
+            <!--<item-->
+            <!--android:id="@+id/nav_aboutus"-->
+            <!--android:icon="@drawable/ic_info"-->
+            <!--android:title="About Us" />-->
+
+        </menu>
+    </item>
+    <item
+        android:id="@+id/nav_follow"
+        android:icon="@drawable/ic_twitter"
+        android:title="Follow Us" />
+    <!--<item-->
+        <!--android:id="@+id/nav_logout"-->
+        <!--android:icon="@drawable/ic_exit"-->
+        <!--android:title="Logout" />-->
+
+    <item android:title="" />
+
+
+</menu>

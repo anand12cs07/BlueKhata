@@ -1,0 +1,59 @@
+<resources>
+
+    <array name="category_icons">
+        <item>@drawable/ic_bank</item>
+        <item>@drawable/ic_bill</item>
+        <item>@drawable/ic_budget</item>
+        <item>@drawable/ic_food</item>
+        <item>@drawable/ic_transport</item>
+        <item>@drawable/ic_wallet</item>
+        <item>@drawable/ic_car</item>
+        <item>@drawable/ic_cloth</item>
+        <item>@drawable/ic_entertainment</item>
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_shop</item>
+        <item>@drawable/ic_drink</item>
+        <item>@drawable/ic_money</item>
+        <item>@drawable/ic_electronic</item>
+
+        <item>@drawable/ic_foods</item>
+        <item>@drawable/ic_grocery</item>
+        <item>@drawable/ic_kitchen</item>
+        <item>@drawable/ic_pet</item>
+        <item>@drawable/ic_vegetable</item>
+        <item>@drawable/ic_gym</item>
+        <item>@drawable/ic_health</item>
+        <item>@drawable/ic_mobile</item>
+        <item>@drawable/ic_smoke</item>
+        <item>@drawable/ic_family</item>
+        <item>@drawable/ic_cake</item>
+        <item>@drawable/ic_fruits</item>
+        <item>@drawable/ic_gift</item>
+        <item>@drawable/ic_laptop</item>
+        <item>@drawable/ic_leisure</item>
+
+        <item>@drawable/ic_business</item>
+        <item>@drawable/ic_child_care</item>
+        <item>@drawable/ic_metro</item>
+        <item>@drawable/ic_call</item>
+        <item>@drawable/ic_event</item>
+        <item>@drawable/ic_flight</item>
+        <item>@drawable/ic_live_tv</item>
+        <item>@drawable/ic_gas_station</item>
+        <item>@drawable/ic_router</item>
+        <item>@drawable/ic_receipt</item>
+        <item>@drawable/ic_school</item>
+        <item>@drawable/ic_work</item>
+
+        <item>@drawable/ic_award</item>
+        <item>@drawable/ic_chart</item>
+        <item>@drawable/ic_rental</item>
+        <item>@drawable/ic_salery</item>
+        <item>@drawable/ic_sale</item>
+        <item>@drawable/ic_music</item>
+        <item>@drawable/ic_motorcycle</item>
+        <item>@drawable/ic_utils</item>
+        <item>@drawable/ic_more</item>
+
+    </array>
+</resources>

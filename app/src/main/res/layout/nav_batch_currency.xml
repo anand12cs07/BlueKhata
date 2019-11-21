@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_currency_symbol"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:background="@drawable/bg_rounded_accent"
+    android:gravity="center_vertical"
+    android:paddingLeft="@dimen/_8sdp"
+    android:paddingRight="@dimen/_8sdp"
+    android:text="US Dollar - $"
+    android:textColor="@color/colorAlwaysWhite"
+    android:textSize="@dimen/_12ssp">
+
+</androidx.appcompat.widget.AppCompatTextView>

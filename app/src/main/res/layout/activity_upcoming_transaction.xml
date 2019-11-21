@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?WindowBackGroundColor"
+        android:orientation="vertical"
+        tools:context="com.everyrupee.ui.upcoming.UpcomingTransactionActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?BackGroundColorWhite"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?colorPrimary"
+                app:title="Upcoming Transaction" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_8sdp">
+
+            <com.everyrupee.utils.RecyclerViewEmptySupport
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutAnimation="@anim/layout_anim_fall_down" />
+
+            <RelativeLayout
+                android:id="@+id/img_empty"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_empty1"
+                    android:layout_width="@dimen/_205sdp"
+                    android:layout_height="@dimen/_195sdp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:padding="@dimen/_40sdp"
+                    app:srcCompat="@drawable/ic_no_data" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_empty1"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="?TextTitleColor"
+                    android:textSize="@dimen/_12ssp"
+                    android:text="No Transaction Found..." />
+            </RelativeLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</layout>

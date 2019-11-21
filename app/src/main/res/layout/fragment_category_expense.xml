@@ -1,0 +1,66 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.everyrupee.ui.dashboard.category.expense.ExpenseCategoryViewModel" />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?WindowBackGroundColor">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_8sdp">
+
+            <com.everyrupee.utils.RecyclerViewEmptySupport
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutAnimation="@anim/layout_anim_fall_down"
+                app:adapter="@{viewModel.expenseListLiveData}"/>
+
+            <RelativeLayout
+                android:id="@+id/img_empty_expense"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_empty1"
+                    android:layout_width="@dimen/_205sdp"
+                    android:layout_height="@dimen/_195sdp"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/_40sdp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_add_category" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_empty1"
+                    android:layout_centerHorizontal="true"
+                    android:text="No Expense Category Found..."
+                    android:textColor="?TextTitleColor"
+                    android:textSize="@dimen/_12ssp" />
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="@dimen/_14sdp"
+            android:tint="@color/white"
+            app:fabCustomSize="@dimen/_48sdp"
+            app:srcCompat="@drawable/ic_add" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
