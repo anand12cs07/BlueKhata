@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="?WindowBackGroundColor"
         android:orientation="vertical"
-        tools:context="com.everyrupee.ui.dashboard.home.HomeFragment">
+        tools:context="com.bluekhata.ui.dashboard.home.HomeFragment">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/home_scrollView"
@@ -172,23 +172,14 @@
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp">
+                    android:layout_height="wrap_content">
 
-                    <com.everyrupee.utils.horizontalcalendar.HorizontalCalendarView
-                        android:id="@+id/calendarViewMonth"
+                    <com.multicalenderview.MultiCalendarView
+                        android:id="@+id/multiCalendarView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="?BackGroundColorWhite"
-                        app:selectorColor="?PrimaryColor"
-                        app:textColorNormal="@color/colorLightGrey"
-                        app:textColorSelected="?TextTitleColor" />
-
-                    <com.everyrupee.utils.horizontalcalendar.HorizontalCalendarView
-                        android:id="@+id/calendarViewDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?BackGroundColorWhite"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        app:calendarBackGround="?BackGroundColorWhite"
                         app:selectorColor="?PrimaryColor"
                         app:textColorNormal="@color/colorLightGrey"
                         app:textColorSelected="?TextTitleColor" />
@@ -200,7 +191,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/layout_calender"
                     android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginRight="@dimen/_8sdp"
                     android:visibility="gone"
                     app:cardBackgroundColor="?BackGroundColorWhite"
@@ -303,7 +293,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                            <com.everyrupee.utils.RecyclerViewEmptySupport
+                            <com.bluekhata.utils.RecyclerViewEmptySupport
                                 android:id="@+id/recyclerViewExpense"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -350,7 +340,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                            <com.everyrupee.utils.RecyclerViewEmptySupport
+                            <com.bluekhata.utils.RecyclerViewEmptySupport
                                 android:id="@+id/recyclerViewIncome"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

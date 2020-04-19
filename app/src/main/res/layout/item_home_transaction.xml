@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.everyrupee.ui.dashboard.home.HomeItemViewModel" />
+            type="com.bluekhata.ui.dashboard.home.HomeItemViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

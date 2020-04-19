@@ -9,7 +9,7 @@
         <import type="android.text.TextUtils"/>
         <variable
             name="viewModel"
-            type="com.everyrupee.ui.dashboard.DashBoardViewModel" />
+            type="com.bluekhata.ui.dashboard.DashBoardViewModel" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout

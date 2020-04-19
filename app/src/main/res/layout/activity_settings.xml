@@ -9,7 +9,7 @@
         android:background="?WindowBackGroundColor"
         android:fillViewport="true"
         android:orientation="vertical"
-        tools:context="com.everyrupee.com.accountmanager.ui.setting.SettingsActivity">
+        tools:context="com.bluekhata.com.accountmanager.ui.setting.SettingsActivity">
 
         <LinearLayout
             android:layout_width="match_parent"

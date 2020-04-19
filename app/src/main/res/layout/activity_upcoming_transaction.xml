@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="?WindowBackGroundColor"
         android:orientation="vertical"
-        tools:context="com.everyrupee.ui.upcoming.UpcomingTransactionActivity">
+        tools:context="com.bluekhata.ui.upcoming.UpcomingTransactionActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:padding="@dimen/_8sdp">
 
-            <com.everyrupee.utils.RecyclerViewEmptySupport
+            <com.bluekhata.utils.RecyclerViewEmptySupport
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

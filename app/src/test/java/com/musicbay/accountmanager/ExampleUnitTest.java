@@ -1,4 +1,4 @@
-package com.everyrupee;
+package com.bluekhata;
 
 import org.junit.Test;
 

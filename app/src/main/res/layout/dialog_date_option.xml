@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.everyrupee.ui.dashboard.transaction.datedialog.DateOptionViewModel" />
+            type="com.bluekhata.ui.dashboard.transaction.datedialog.DateOptionViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

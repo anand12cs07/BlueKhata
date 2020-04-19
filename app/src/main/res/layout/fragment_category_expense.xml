@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.everyrupee.ui.dashboard.category.expense.ExpenseCategoryViewModel" />
+            type="com.bluekhata.ui.dashboard.category.expense.ExpenseCategoryViewModel" />
     </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:padding="@dimen/_8sdp">
 
-            <com.everyrupee.utils.RecyclerViewEmptySupport
+            <com.bluekhata.utils.RecyclerViewEmptySupport
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?WindowBackGroundColor"
-        tools:context="com.everyrupee.com.accountmanager.ui.dashboard.home.homedetails.HomeDetailFragment">
+        tools:context="com.bluekhata.com.accountmanager.ui.dashboard.home.homedetails.HomeDetailFragment">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <com.everyrupee.utils.RecyclerViewEmptySupport
+                <com.bluekhata.utils.RecyclerViewEmptySupport
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

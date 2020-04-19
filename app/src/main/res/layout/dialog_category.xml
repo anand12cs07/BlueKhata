@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="@dimen/_5sdp">
 
-    <com.everyrupee.utils.RecyclerViewEmptySupport
+    <com.bluekhata.utils.RecyclerViewEmptySupport
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

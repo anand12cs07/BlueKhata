@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.everyrupee.ui.addcategory.AddCategoryViewModel" />
+            type="com.bluekhata.ui.addcategory.AddCategoryViewModel" />
     </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

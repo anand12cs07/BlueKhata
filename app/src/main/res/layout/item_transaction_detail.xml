@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.everyrupee.ui.dashboard.home.homedetails.HomeDetailItemViewModel" />
+            type="com.bluekhata.ui.dashboard.home.homedetails.HomeDetailItemViewModel" />
 
     </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout

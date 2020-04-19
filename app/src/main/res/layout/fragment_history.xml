@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?WindowBackGroundColor"
-        tools:context="com.everyrupee.ui.dashboard.history.HistoryFragment">
+        tools:context="com.bluekhata.ui.dashboard.history.HistoryFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <FrameLayout
@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:padding="@dimen/_8sdp">
 
-            <com.everyrupee.utils.RecyclerViewEmptySupport
+            <com.bluekhata.utils.RecyclerViewEmptySupport
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.everyrupee;
+package com.bluekhata;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

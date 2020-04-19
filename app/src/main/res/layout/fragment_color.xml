@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?WindowBackGroundColor"
-    tools:context="com.everyrupee.com.accountmanager.ui.addcategory.colors.ColorFragment">
+    tools:context="com.bluekhata.com.accountmanager.ui.addcategory.colors.ColorFragment">
 
-    <com.everyrupee.utils.RecyclerViewEmptySupport
+    <com.bluekhata.utils.RecyclerViewEmptySupport
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

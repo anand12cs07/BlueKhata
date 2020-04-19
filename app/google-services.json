@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "771334750692",
-    "firebase_url": "https://everyrupee-6b1d5.firebaseio.com",
-    "project_id": "everyrupee-6b1d5",
-    "storage_bucket": "everyrupee-6b1d5.appspot.com"
+    "project_number": "619110616541",
+    "firebase_url": "https://bluekhata-4c2c7.firebaseio.com",
+    "project_id": "bluekhata-4c2c7",
+    "storage_bucket": "bluekhata-4c2c7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:771334750692:android:817f2c9eb5fed9442c07f1",
+        "mobilesdk_app_id": "1:619110616541:android:46d024a06b58b2f7ccba34",
         "android_client_info": {
-          "package_name": "com.everyrupee"
+          "package_name": "com.bluekhata"
         }
       },
       "oauth_client": [
         {
-          "client_id": "771334750692-oq9re7mmr7rb2lpm1pemhjodnfn7l8na.apps.googleusercontent.com",
+          "client_id": "619110616541-vicf4a43tqqa6q79nl4m3dnv166u3ec8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bluekhata",
+            "certificate_hash": "6a72a110601391dab4b4990aa2130b88259f7c5e"
+          }
+        },
+        {
+          "client_id": "619110616541-3eofgstvq08k44ltelk2uon3o1h2b8cl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBvbgAGcQtkrFytJIKT0dBjhxmIgayKlHk"
+          "current_key": "AIzaSyAUzdxGWbEjcwKwm3XfVXf1HK_CkaxPwfs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "771334750692-oq9re7mmr7rb2lpm1pemhjodnfn7l8na.apps.googleusercontent.com",
+              "client_id": "619110616541-3eofgstvq08k44ltelk2uon3o1h2b8cl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

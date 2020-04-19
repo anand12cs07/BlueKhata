@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.everyrupee.ui.tags.TagItemViewModel" />
+            type="com.bluekhata.ui.tags.TagItemViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

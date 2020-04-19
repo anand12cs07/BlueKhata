@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.everyrupee.ui.dashboard.transaction.TransactionViewModel" />
+            type="com.bluekhata.ui.dashboard.transaction.TransactionViewModel" />
     </data>
     <androidx.core.widget.NestedScrollView
         android:id="@+id/bottom_sheet"
