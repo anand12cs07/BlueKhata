@@ -30,7 +30,6 @@ import com.bluekhata.ui.dashboard.DashBoardActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
 import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetDialog;
 import com.bluekhata.utils.CommonUtils;
-
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 import com.multicalenderview.HorizontalCalendar;
 import com.multicalenderview.HorizontalCalendarListener;
@@ -126,6 +125,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
+        inflater.inflate(R.menu.menu_home, menu);
     }
 
     @Override
@@ -191,7 +191,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         multiHorizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Date startDate, Date endDate, int position) {
-                onDateCalenderSelectListener(startDate,endDate);
+                onDateCalenderSelectListener(startDate, endDate);
             }
         });
     }

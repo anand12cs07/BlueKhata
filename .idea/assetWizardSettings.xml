@@ -144,8 +144,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_empty_transaction" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/ic_empty_transaction.svg" />
+                            <entry key="outputName" value="ic_wallet" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/ic_wallet.svg" />
                           </map>
                         </option>
                       </PersistentState>
