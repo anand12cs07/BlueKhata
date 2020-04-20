@@ -137,7 +137,10 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     public void onDismiss() {
         // on Transaction Bottom Sheet Dialog dismiss
         Date date = multiHorizontalCalendar.getSelectedDate();
-        onDateCalenderSelectListener(multiHorizontalCalendar.getStartDate(date), multiHorizontalCalendar.getEndDate(date));
+        onDateCalenderSelectListener(
+                multiHorizontalCalendar.getStartDate(date),
+                multiHorizontalCalendar.getEndDate(date)
+        );
     }
 
     private void setUpHeader() {
