@@ -72,7 +72,6 @@ public class DashBoardActivity extends BaseActivity<ActivityDashBoardBinding, Da
 
     private Toolbar mToolbar;
     private DrawerLayout drawerLayout;
-    private AppCompatSpinner mSpinner;
     private NavigationView navigationView;
     private BottomNavigationView mBottomNavigationView;
 
@@ -116,8 +115,6 @@ public class DashBoardActivity extends BaseActivity<ActivityDashBoardBinding, Da
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         mActivityDashBoardBinding.tvVersion.setText("Ver. " + getCurrentVersionName());
-
-        setUpUpdateText();
 
         AppUtils.setFragment(new HomeFragment(), true, false, this, R.id.container, HomeFragment.TAG);
     }
@@ -225,13 +222,8 @@ public class DashBoardActivity extends BaseActivity<ActivityDashBoardBinding, Da
 
     }
 
-    public AppCompatSpinner getSpinner() {
-        return mSpinner;
-    }
-
     private void attachView() {
         mToolbar = (Toolbar) mActivityDashBoardBinding.dashboardToolbar;
-        mSpinner = (AppCompatSpinner) mActivityDashBoardBinding.dashBoardSpinner;
         drawerLayout = (DrawerLayout) mActivityDashBoardBinding.drawerLayout;
         navigationView = (NavigationView) mActivityDashBoardBinding.navView;
         mBottomNavigationView = (BottomNavigationView) mActivityDashBoardBinding.bottomNavMenu;
@@ -274,7 +266,7 @@ public class DashBoardActivity extends BaseActivity<ActivityDashBoardBinding, Da
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT,
-                "Hey, \nEveryRupee is fast, simple and very unique app that I use " +
+                "Hey, \nBlueKhata is fast, simple and very unique app that I use " +
                         "to track my expense and income on daily basis. \n \n " +
                         "Get it for free at \n https://play.google.com/store/apps/details?id=" + getPackageName());
         sendIntent.setType("text/plain");
@@ -296,25 +288,4 @@ public class DashBoardActivity extends BaseActivity<ActivityDashBoardBinding, Da
         }
         return null;
     }
-
-    private void setUpUpdateText() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("update_status");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String updatedVersion = dataSnapshot.getValue(String.class);
-                Boolean value = getCurrentVersionName().compareTo(updatedVersion) < 0;
-                mActivityDashBoardBinding.tvVersion.setText(value ? "Update Available" : "Ver. " + getCurrentVersionName());
-                mActivityDashBoardBinding.tvVersion.setOnClickListener(value ? DashBoardActivity.this : null);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
-    }
-
 }

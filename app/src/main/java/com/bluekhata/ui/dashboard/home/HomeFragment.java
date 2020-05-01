@@ -2,11 +2,14 @@ package com.bluekhata.ui.dashboard.home;
 
 
 import android.animation.ObjectAnimator;
+import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,12 +26,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.bluekhata.BR;
 import com.bluekhata.R;
 import com.bluekhata.ViewModelProviderFactory;
+import com.bluekhata.data.model.db.Wallet;
 import com.bluekhata.data.model.db.custom.TransactionWithCategory;
 import com.bluekhata.databinding.FragmentHomeBinding;
 import com.bluekhata.ui.base.BaseFragment;
 import com.bluekhata.ui.dashboard.DashBoardActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
+import com.bluekhata.ui.dashboard.budget.BudgetActivity;
+import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarBottomSheetDialog;
+import com.bluekhata.ui.dashboard.home.calendarmodes.ICalendarModeChangeListener;
+import com.bluekhata.ui.dashboard.home.wallets.OnWalletClickListener;
+import com.bluekhata.ui.dashboard.home.wallets.WalletBottomSheetDialog;
 import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetDialog;
+import com.bluekhata.utils.AppUtils;
 import com.bluekhata.utils.CommonUtils;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 import com.multicalenderview.HorizontalCalendar;
@@ -42,7 +52,7 @@ import javax.inject.Inject;
 
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel>
-        implements View.OnClickListener, RefreshListOnDismiss {
+        implements View.OnClickListener, RefreshListOnDismiss, ICalendarModeChangeListener, OnWalletClickListener {
 
     public static final String TAG = "HomeFragment";
 
@@ -58,7 +68,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     private HomeViewModel viewModel;
 
     private FragmentHomeBinding homeBinding;
-    private AppCompatSpinner spinner;
     private DashBoardActivity dashBoardActivity;
     private CircularProgressBar circularProgressBar;
 
@@ -67,6 +76,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     private TransactionBottomSheetDialog bottomSheetDialogFragment;
 
     private double expenses, incomes;
+    private Calendar startDate, endDate;
 
     @Override
     public int getBindingVariable() {
@@ -96,7 +106,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         setHasOptionsMenu(true);
 
         dashBoardActivity = ((DashBoardActivity) getActivity());
-        spinner = dashBoardActivity.getSpinner();
 
         builderMultiCalendar = new HorizontalCalendar.Builder(view, R.id.multiCalendarView);
 
@@ -106,10 +115,14 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         setUpIncomeListObserver();
 
         homeBinding.fab.setOnClickListener(this);
+        homeBinding.btnBudget.setOnClickListener(this);
 
         setUpFabAnim();
-        setSpinnerData();
         setUpCalender();
+
+        ShapeDrawable bitmapDrawable = AppUtils.getDrawableBitmap(Color.parseColor("#075fcd"));
+        homeBinding.anchorSplit.setBackground(bitmapDrawable);
+        homeBinding.anchorGoal.setBackground(bitmapDrawable);
 
         return view;
     }
@@ -129,8 +142,43 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.home_calendar:
+                CalendarBottomSheetDialog dialog = new CalendarBottomSheetDialog();
+                dialog.setModeChangeListener(this);
+                dialog.show(getChildFragmentManager(), CalendarBottomSheetDialog.TAG);
+                break;
+            case R.id.home_wallet:
+                WalletBottomSheetDialog walletDialog = new WalletBottomSheetDialog();
+                walletDialog.setOnWalletClickListener(this);
+                walletDialog.show(getChildFragmentManager(),WalletBottomSheetDialog.TAG);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onClick(View view) {
-        showBottomSheet();
+        switch (view.getId()){
+            case R.id.fab:
+                showBottomSheet();
+                break;
+            case R.id.btnBudget:
+                startActivity(BudgetActivity.newIntent(getContext()));
+                break;
+        }
+
+    }
+
+    @Override
+    public void onCalendarModeChange(String mode) {
+        multiHorizontalCalendar.refresh(mode,startDate.getTime(), endDate.getTime());
+    }
+
+    @Override
+    public void walletClickListener(Wallet selectedWallet) {
+
     }
 
     @Override
@@ -199,36 +247,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         });
     }
 
-    private void setSpinnerData() {
-        String[] data = {"By Date", "By Month"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_selected_item, data);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Calendar startDate = Calendar.getInstance();
-                Calendar endDate = Calendar.getInstance();
-                if (i == 0) {
-                    startDate.add(Calendar.MONTH, -10);
-                    endDate.add(Calendar.MONTH, 1);
-                    multiHorizontalCalendar.refresh(HorizontalCalendar.MODE_DAILY, startDate.getTime(), endDate.getTime());
-                } else {
-                    startDate.add(Calendar.MONTH, -11);
-                    endDate.add(Calendar.MONTH, 1);
-                    multiHorizontalCalendar.refresh(HorizontalCalendar.MODE_MONTHLY, startDate.getTime(), endDate.getTime());
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-    }
-
     private void onDateCalenderSelectListener(Date startDate, Date endDate) {
         Long[] date1 = new Long[]{startDate.getTime(), endDate.getTime()};
 
@@ -242,9 +260,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     }
 
     private HorizontalCalendar getMultiCalendarView(HorizontalCalendar.Builder builder) {
-        Calendar startDate = Calendar.getInstance();
+        startDate = Calendar.getInstance();
         startDate.add(Calendar.MONTH, -10);
-        Calendar endDate = Calendar.getInstance();
+        endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
 
         multiHorizontalCalendar = builderMultiCalendar
@@ -259,7 +277,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                 .showDayName(false)
                 .showMonthName(true)
                 .showYearAndMonth(false)
-                .setCalendarMode(com.multicalenderview.HorizontalCalendar.MODE_DAILY)
+                .setCalendarMode(HorizontalCalendar.MODE_DAILY)
                 .build();
 
         return multiHorizontalCalendar;

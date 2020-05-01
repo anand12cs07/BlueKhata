@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.bluekhata.ui.dashboard.home.wallets.settings.WalletSettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?WindowBackGroundColor"
+        android:orientation="vertical"
+        tools:context="com.bluekhata.com.accountmanager.ui.currencies.CurrencyListActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?PrimaryColor"
+                app:title="Wallets"
+                app:titleTextColor="@color/colorAlwaysWhite" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:background="?BackGroundColorWhite"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_4sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/add_tag"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:tint="?TextTitleColor"
+                app:srcCompat="@drawable/ic_add" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/tv_wallet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="Create Wallet"
+                android:padding="@dimen/_8sdp"
+                android:text="@={viewModel.walletTitle}"
+                android:textColor="?TextTitleColor"
+                android:textColorHint="@color/colorDarkSubTitle"
+                android:textSize="@dimen/_13ssp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ok_tag"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_gravity="center"
+                android:tint="?TextTitleColor"
+                app:srcCompat="@drawable/ic_done" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/_8sdp"
+            android:paddingRight="@dimen/_8sdp">
+
+            <com.bluekhata.utils.RecyclerViewEmptySupport
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutAnimation="@anim/layout_anim_fall_down" />
+
+            <RelativeLayout
+                android:id="@+id/img_empty"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_empty1"
+                    android:layout_width="@dimen/_205sdp"
+                    android:layout_height="@dimen/_195sdp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:padding="@dimen/_40sdp"
+                    app:srcCompat="@drawable/ic_no_data" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_empty1"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="?TextTitleColor"
+                    android:textSize="@dimen/_12ssp"
+                    android:text="No Wallet Found..." />
+            </RelativeLayout>
+
+
+        </FrameLayout>
+    </LinearLayout>
+
+</layout>

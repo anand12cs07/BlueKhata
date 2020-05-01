@@ -3,22 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bluekhata">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.bluekhata.AppController"
+        android:name=".AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/BaseTheme.Dark">
+        <activity android:name=".ui.dashboard.budget.BudgetActivity"></activity>
+        <activity android:name=".ui.dashboard.home.wallets.settings.WalletSettingActivity" />
         <activity
-            android:name="com.bluekhata.ui.dashboard.DashBoardActivity"
+            android:name=".ui.dashboard.DashBoardActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bluekhata.ui.splash.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,24 +29,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bluekhata.ui.addcategory.AddCategoryActivity"
+            android:name=".ui.addcategory.AddCategoryActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.bluekhata.ui.currencies.CurrencyListActivity"
+            android:name=".ui.currencies.CurrencyListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bluekhata.ui.setting.SettingsActivity"
+            android:name=".ui.setting.SettingsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bluekhata.ui.tags.TagActivity"
+            android:name=".ui.tags.TagActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bluekhata.ui.upcoming.UpcomingTransactionActivity"
+            android:name=".ui.upcoming.UpcomingTransactionActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bluekhata.ui.recursive.RecursiveTransactionActivity"
+            android:name=".ui.recursive.RecursiveTransactionActivity"
             android:screenOrientation="portrait" />
     </application>
 

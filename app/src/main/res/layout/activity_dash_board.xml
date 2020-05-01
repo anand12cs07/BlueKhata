@@ -38,14 +38,6 @@
                     app:popupTheme="@style/AppTheme.PopupOverlay"
                     app:title="@{viewModel.appTitle}">
 
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/dashBoardSpinner"
-                        style="@style/AppTheme.Spinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:backgroundTint="@color/white"
-                        android:visibility="@{TextUtils.isEmpty(viewModel.appTitle) ? View.VISIBLE : View.GONE}"/>
-
                 </androidx.appcompat.widget.Toolbar>
 
             </com.google.android.material.appbar.AppBarLayout>

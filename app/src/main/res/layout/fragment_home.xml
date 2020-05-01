@@ -170,6 +170,90 @@
 
                 </RelativeLayout>
 
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fillViewport="true">
+
+                    <androidx.coordinatorlayout.widget.CoordinatorLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnBudget"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:layout_weight="1"
+                                android:text="Budget"
+                                android:textColor="?TextTitleColor"
+                                app:backgroundTint="?BackGroundColorWhite"
+                                app:cornerRadius="@dimen/_50sdp"
+                                app:rippleColor="?colorPrimary" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSplit"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:layout_weight="1"
+                                android:text="Split"
+                                android:textColor="?TextTitleColor"
+                                app:backgroundTint="?BackGroundColorWhite"
+                                app:cornerRadius="@dimen/_50sdp"
+                                app:rippleColor="?colorPrimary" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnGoal"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:layout_marginRight="@dimen/_8sdp"
+                                android:layout_weight="1"
+                                android:text="Goal"
+                                android:textColor="?TextTitleColor"
+                                app:backgroundTint="?BackGroundColorWhite"
+                                app:cornerRadius="@dimen/_50sdp"
+                                app:rippleColor="?colorPrimary" />
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/anchorSplit"
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp"
+                            android:layout_marginEnd="@dimen/_3sdp"
+                            android:gravity="center"
+                            android:text="B"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_anchor="@id/btnSplit"
+                            app:layout_anchorGravity="top|end" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/anchorGoal"
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp"
+                            android:layout_marginEnd="@dimen/_3sdp"
+                            android:gravity="center"
+                            android:text="B"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_anchor="@id/btnGoal"
+                            app:layout_anchorGravity="top|end" />
+                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                </HorizontalScrollView>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -178,7 +262,6 @@
                         android:id="@+id/multiCalendarView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
                         app:calendarBackGround="?BackGroundColorWhite"
                         app:selectorColor="?PrimaryColor"
                         app:textColorNormal="@color/colorLightGrey"
@@ -267,11 +350,12 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_below="@+id/card_daily_detail"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:layout_marginRight="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
+                    android:layout_weight="1"
                     app:cardBackgroundColor="?WindowBackGroundColor"
                     app:cardElevation="0dp">
 

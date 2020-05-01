@@ -4,11 +4,17 @@ import com.bluekhata.di.PerActivity;
 import com.bluekhata.ui.addcategory.AddCategoryActivity;
 import com.bluekhata.ui.addcategory.AddCategoryModule;
 import com.bluekhata.ui.dashboard.DashBoardActivity;
+import com.bluekhata.ui.dashboard.budget.BudgetActivity;
+import com.bluekhata.ui.dashboard.budget.BudgetModule;
 import com.bluekhata.ui.dashboard.category.CategoryFragmentProvider;
 import com.bluekhata.ui.dashboard.history.HistoryFragmentProvider;
 import com.bluekhata.ui.dashboard.history.filter.HistoryBottomSheetProvider;
 import com.bluekhata.ui.dashboard.home.HomeFragmentProvider;
+import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarBottomSheetProvider;
 import com.bluekhata.ui.dashboard.home.homedetails.HomeDetailFragmentProvider;
+import com.bluekhata.ui.dashboard.home.wallets.WalletBottomSheetProvider;
+import com.bluekhata.ui.dashboard.home.wallets.settings.WalletSettingActivity;
+import com.bluekhata.ui.dashboard.home.wallets.settings.WalletSettingModule;
 import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetProvider;
 import com.bluekhata.ui.dashboard.transaction.datedialog.DateOptionProvider;
 import com.bluekhata.ui.recursive.RecursiveModule;
@@ -34,10 +40,18 @@ public abstract class ActivityBuilder {
             HomeFragmentProvider.class,
             HomeDetailFragmentProvider.class,
             TransactionBottomSheetProvider.class,
+            CalendarBottomSheetProvider.class,
+            WalletBottomSheetProvider.class,
             HistoryBottomSheetProvider.class,
             DateOptionProvider.class,
             HistoryFragmentProvider.class})
     abstract DashBoardActivity bindDashBoardActivity();
+
+    @ContributesAndroidInjector(modules = WalletSettingModule.class)
+    abstract WalletSettingActivity bindWalletSettingActivity();
+
+    @ContributesAndroidInjector(modules = BudgetModule.class)
+    abstract BudgetActivity bindBudgetActivity();
 
     @ContributesAndroidInjector(modules = AddCategoryModule.class)
     abstract AddCategoryActivity bindAddCategoryActivity();
