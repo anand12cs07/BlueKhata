@@ -114,8 +114,6 @@ public class DashBoardActivity extends BaseActivity<ActivityDashBoardBinding, Da
         navigationView.setNavigationItemSelectedListener(this);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-//        mActivityDashBoardBinding.tvVersion.setText("Ver. " + getCurrentVersionName());
-
         AppUtils.setFragment(new HomeFragment(), true, false, this, R.id.container, HomeFragment.TAG);
     }
 

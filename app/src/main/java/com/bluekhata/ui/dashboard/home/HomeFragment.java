@@ -12,11 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.widget.NestedScrollView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -32,11 +29,9 @@ import com.bluekhata.databinding.FragmentHomeBinding;
 import com.bluekhata.ui.base.BaseFragment;
 import com.bluekhata.ui.dashboard.DashBoardActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
-import com.bluekhata.ui.dashboard.budget.BudgetActivity;
 import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarBottomSheetDialog;
 import com.bluekhata.ui.dashboard.home.calendarmodes.ICalendarModeChangeListener;
 import com.bluekhata.ui.dashboard.home.wallets.OnWalletClickListener;
-import com.bluekhata.ui.dashboard.home.wallets.WalletBottomSheetDialog;
 import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetDialog;
 import com.bluekhata.utils.AppUtils;
 import com.bluekhata.utils.CommonUtils;
@@ -115,14 +110,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         setUpIncomeListObserver();
 
         homeBinding.fab.setOnClickListener(this);
-        homeBinding.btnBudget.setOnClickListener(this);
 
         setUpFabAnim();
         setUpCalender();
-
-        ShapeDrawable bitmapDrawable = AppUtils.getDrawableBitmap(Color.parseColor("#075fcd"));
-        homeBinding.anchorSplit.setBackground(bitmapDrawable);
-        homeBinding.anchorGoal.setBackground(bitmapDrawable);
 
         return view;
     }
@@ -143,29 +133,21 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.home_calendar:
                 CalendarBottomSheetDialog dialog = new CalendarBottomSheetDialog();
                 dialog.setModeChangeListener(this);
                 dialog.show(getChildFragmentManager(), CalendarBottomSheetDialog.TAG);
                 break;
-//            case R.id.home_wallet:
-//                WalletBottomSheetDialog walletDialog = new WalletBottomSheetDialog();
-//                walletDialog.setOnWalletClickListener(this);
-//                walletDialog.show(getChildFragmentManager(),WalletBottomSheetDialog.TAG);
-//                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.fab:
                 showBottomSheet();
-                break;
-            case R.id.btnBudget:
-                startActivity(BudgetActivity.newIntent(getContext()));
                 break;
         }
 
@@ -173,7 +155,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
     @Override
     public void onCalendarModeChange(String mode) {
-        multiHorizontalCalendar.refresh(mode,startDate.getTime(), endDate.getTime());
+        multiHorizontalCalendar.refresh(mode, startDate.getTime(), endDate.getTime());
     }
 
     @Override

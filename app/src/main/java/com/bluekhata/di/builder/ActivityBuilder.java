@@ -4,8 +4,6 @@ import com.bluekhata.di.PerActivity;
 import com.bluekhata.ui.addcategory.AddCategoryActivity;
 import com.bluekhata.ui.addcategory.AddCategoryModule;
 import com.bluekhata.ui.dashboard.DashBoardActivity;
-import com.bluekhata.ui.dashboard.budget.BudgetActivity;
-import com.bluekhata.ui.dashboard.budget.BudgetModule;
 import com.bluekhata.ui.dashboard.category.CategoryFragmentProvider;
 import com.bluekhata.ui.dashboard.history.HistoryFragmentProvider;
 import com.bluekhata.ui.dashboard.history.filter.HistoryBottomSheetProvider;
@@ -21,9 +19,9 @@ import com.bluekhata.ui.recursive.RecursiveModule;
 import com.bluekhata.ui.recursive.RecursiveTransactionActivity;
 import com.bluekhata.ui.setting.SettingsActivity;
 import com.bluekhata.ui.splash.SplashActivity;
-import com.bluekhata.ui.upcoming.UpcomingModule;
 import com.bluekhata.ui.tags.TagActivity;
 import com.bluekhata.ui.tags.TagModule;
+import com.bluekhata.ui.upcoming.UpcomingModule;
 import com.bluekhata.ui.upcoming.UpcomingTransactionActivity;
 
 import dagger.Module;
@@ -49,9 +47,6 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = WalletSettingModule.class)
     abstract WalletSettingActivity bindWalletSettingActivity();
-
-    @ContributesAndroidInjector(modules = BudgetModule.class)
-    abstract BudgetActivity bindBudgetActivity();
 
     @ContributesAndroidInjector(modules = AddCategoryModule.class)
     abstract AddCategoryActivity bindAddCategoryActivity();
