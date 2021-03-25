@@ -10,253 +10,270 @@
         android:orientation="vertical"
         tools:context="com.bluekhata.ui.dashboard.home.HomeFragment">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/home_scrollView"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:elevation="0dp">
 
-            <LinearLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:focusableInTouchMode="true"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <RelativeLayout
-                    android:id="@+id/headerTop"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?PrimaryColor"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="@dimen/_60ssp"
+                    android:orientation="vertical"
+                    app:layout_collapseMode="parallax">
 
                     <RelativeLayout
-                        android:id="@+id/header"
+                        android:id="@+id/headerTop"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:paddingBottom="@dimen/_2sdp">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="@dimen/_14sdp"
-                            android:orientation="vertical">
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="bottom"
-                                android:text="INCOME"
-                                android:textColor="@color/colorAlwaysWhite"
-                                android:textSize="@dimen/_10ssp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tv_currency"
-                                    style="@style/FontFamilyMedium"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/colorAlwaysWhite"
-                                    android:textSize="@dimen/_14ssp" />
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tv_income"
-                                    style="@style/FontFamilyMedium"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textColor="@color/colorAlwaysWhite"
-                                    android:textSize="@dimen/_14ssp" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                            android:id="@+id/progress_bar"
-                            android:layout_width="@dimen/_75sdp"
-                            android:layout_height="@dimen/_75sdp"
-                            android:layout_centerHorizontal="true"
-                            app:cpb_background_progressbar_color="@color/colorAlwaysWhite"
-                            app:cpb_background_progressbar_width="@dimen/_1sdp"
-                            app:cpb_progress="0"
-                            app:cpb_progressbar_color="@color/colorAlwaysWhite"
-                            app:cpb_progressbar_width="@dimen/_4sdp" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="@dimen/_14sdp"
-                            android:orientation="vertical">
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="bottom"
-                                android:text="EXPENSE"
-                                android:textColor="@color/colorAlwaysWhite"
-                                android:textSize="@dimen/_10ssp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tv_currency1"
-                                    style="@style/FontFamilyMedium"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/colorAlwaysWhite"
-                                    android:textSize="@dimen/_14ssp" />
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tv_expense"
-                                    style="@style/FontFamilyMedium"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textColor="@color/colorAlwaysWhite"
-                                    android:textSize="@dimen/_14ssp" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/header"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:background="?PrimaryColor"
                         android:orientation="horizontal">
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="bottom"
-                            android:text="BALANCE"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_10ssp" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tv_currency2"
-                            style="@style/FontFamilyMedium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_14ssp" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tv_balance"
-                            style="@style/FontFamilyMedium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_14ssp" />
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-
-                <HorizontalScrollView
-                    android:id="@+id/horizontalScroll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:fillViewport="true">
-
-                    <androidx.coordinatorlayout.widget.CoordinatorLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
+                        <RelativeLayout
+                            android:id="@+id/header"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:paddingBottom="@dimen/_2sdp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/_14sdp"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="bottom"
+                                    android:text="INCOME"
+                                    android:textColor="@color/colorAlwaysWhite"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tv_currency"
+                                        style="@style/FontFamilyMedium"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/colorAlwaysWhite"
+                                        android:textSize="@dimen/_14ssp" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tv_income"
+                                        style="@style/FontFamilyMedium"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        android:textColor="@color/colorAlwaysWhite"
+                                        android:textSize="@dimen/_14ssp" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/progress_bar"
+                                android:layout_width="@dimen/_75sdp"
+                                android:layout_height="@dimen/_75sdp"
+                                android:layout_centerHorizontal="true"
+                                app:cpb_background_progressbar_color="@color/colorAlwaysWhite"
+                                app:cpb_background_progressbar_width="@dimen/_1sdp"
+                                app:cpb_progress="0"
+                                app:cpb_progressbar_color="@color/colorAlwaysWhite"
+                                app:cpb_progressbar_width="@dimen/_4sdp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/_14sdp"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="bottom"
+                                    android:text="EXPENSE"
+                                    android:textColor="@color/colorAlwaysWhite"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tv_currency1"
+                                        style="@style/FontFamilyMedium"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/colorAlwaysWhite"
+                                        android:textSize="@dimen/_14ssp" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tv_expense"
+                                        style="@style/FontFamilyMedium"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        android:textColor="@color/colorAlwaysWhite"
+                                        android:textSize="@dimen/_14ssp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/header"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginBottom="@dimen/_8sdp"
                             android:orientation="horizontal">
 
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnBudget"
-                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                android:layout_width="0dp"
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:text="Budget"
-                                android:textColor="?TextTitleColor"
-                                app:backgroundTint="?BackGroundColorWhite"
-                                app:cornerRadius="@dimen/_50sdp"
-                                app:rippleColor="?colorPrimary" />
+                                android:gravity="bottom"
+                                android:text="BALANCE"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10ssp" />
 
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnSplit"
-                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                android:layout_width="0dp"
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_currency2"
+                                style="@style/FontFamilyMedium"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:text="Split"
-                                android:textColor="?TextTitleColor"
-                                app:backgroundTint="?BackGroundColorWhite"
-                                app:cornerRadius="@dimen/_50sdp"
-                                app:rippleColor="?colorPrimary" />
+                                android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14ssp" />
 
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnGoal"
-                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                android:layout_width="0dp"
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_balance"
+                                style="@style/FontFamilyMedium"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_8sdp"
-                                android:layout_marginRight="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:text="Goal"
-                                android:textColor="?TextTitleColor"
-                                app:backgroundTint="?BackGroundColorWhite"
-                                app:cornerRadius="@dimen/_50sdp"
-                                app:rippleColor="?colorPrimary" />
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14ssp" />
+
                         </LinearLayout>
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/anchorSplit"
-                            android:layout_width="@dimen/_16sdp"
-                            android:layout_height="@dimen/_16sdp"
-                            android:layout_marginEnd="@dimen/_3sdp"
-                            android:gravity="center"
-                            android:text="B"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_10ssp"
-                            app:layout_anchor="@id/btnSplit"
-                            app:layout_anchorGravity="top|end" />
+                    </RelativeLayout>
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/anchorGoal"
-                            android:layout_width="@dimen/_16sdp"
-                            android:layout_height="@dimen/_16sdp"
-                            android:layout_marginEnd="@dimen/_3sdp"
-                            android:gravity="center"
-                            android:text="B"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_10ssp"
-                            app:layout_anchor="@id/btnGoal"
-                            app:layout_anchorGravity="top|end" />
-                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                    <HorizontalScrollView
+                        android:id="@+id/horizontalScroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/WindowBackGroundColor"
+                        android:fillViewport="true">
 
-                </HorizontalScrollView>
+                        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnBudget"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_weight="1"
+                                    android:text="Budget"
+                                    android:textColor="?TextTitleColor"
+                                    app:backgroundTint="?BackGroundColorWhite"
+                                    app:cornerRadius="@dimen/_50sdp"
+                                    app:rippleColor="?colorPrimary" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnSplit"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_weight="1"
+                                    android:text="Split"
+                                    android:textColor="?TextTitleColor"
+                                    app:backgroundTint="?BackGroundColorWhite"
+                                    app:cornerRadius="@dimen/_50sdp"
+                                    app:rippleColor="?colorPrimary" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnGoal"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_marginRight="@dimen/_8sdp"
+                                    android:layout_weight="1"
+                                    android:text="Goal"
+                                    android:textColor="?TextTitleColor"
+                                    app:backgroundTint="?BackGroundColorWhite"
+                                    app:cornerRadius="@dimen/_50sdp"
+                                    app:rippleColor="?colorPrimary" />
+                            </LinearLayout>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/anchorSplit"
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:layout_marginEnd="@dimen/_3sdp"
+                                android:gravity="center"
+                                android:text="B"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10ssp"
+                                app:layout_anchor="@id/btnSplit"
+                                app:layout_anchorGravity="top|end" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/anchorGoal"
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:layout_marginEnd="@dimen/_3sdp"
+                                android:gravity="center"
+                                android:text="B"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10ssp"
+                                app:layout_anchor="@id/btnGoal"
+                                app:layout_anchorGravity="top|end" />
+                        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                    </HorizontalScrollView>
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60ssp"
+                    app:layout_collapseMode="parallax"
+                    android:elevation="0dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_gravity="bottom"
+                    android:background="?attr/WindowBackGroundColor"
+                    android:layout_height="@dimen/_60ssp">
 
                     <com.multicalenderview.MultiCalendarView
                         android:id="@+id/multiCalendarView"
@@ -267,6 +284,21 @@
                         app:textColorNormal="@color/colorLightGrey"
                         app:textColorSelected="?TextTitleColor" />
                 </FrameLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/home_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card_daily_detail"
