@@ -149,11 +149,11 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                 dialog.setModeChangeListener(this);
                 dialog.show(getChildFragmentManager(), CalendarBottomSheetDialog.TAG);
                 break;
-            case R.id.home_wallet:
-                WalletBottomSheetDialog walletDialog = new WalletBottomSheetDialog();
-                walletDialog.setOnWalletClickListener(this);
-                walletDialog.show(getChildFragmentManager(),WalletBottomSheetDialog.TAG);
-                break;
+//            case R.id.home_wallet:
+//                WalletBottomSheetDialog walletDialog = new WalletBottomSheetDialog();
+//                walletDialog.setOnWalletClickListener(this);
+//                walletDialog.show(getChildFragmentManager(),WalletBottomSheetDialog.TAG);
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }

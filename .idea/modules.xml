@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EveryRupee.iml" filepath="$PROJECT_DIR$/EveryRupee.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/multicalenderview/multicalenderview.iml" filepath="$PROJECT_DIR$/multicalenderview/multicalenderview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BlueKhata.iml" filepath="$PROJECT_DIR$/BlueKhata.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BlueKhata.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BlueKhata.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/multicalenderview/BlueKhata.multicalenderview.iml" filepath="$PROJECT_DIR$/.idea/modules/multicalenderview/BlueKhata.multicalenderview.iml" />
     </modules>
   </component>
 </project>
