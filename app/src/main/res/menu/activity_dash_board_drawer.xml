@@ -17,11 +17,11 @@
         android:title="Upcoming Transactions"
         app:showAsAction="always" />
 
-    <!--<item-->
-        <!--android:id="@+id/nav_recursive"-->
-        <!--android:icon="@drawable/ic_recursive"-->
-        <!--android:title="Recursive Transactions"-->
-        <!--app:showAsAction="always" />-->
+    <item
+        android:id="@+id/nav_recursive"
+        android:icon="@drawable/ic_recursive"
+        android:title="Recursive Transactions"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/nav_setting"

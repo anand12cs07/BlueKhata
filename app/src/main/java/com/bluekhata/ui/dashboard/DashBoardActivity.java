@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.IdRes;
+
+import com.bluekhata.ui.recursive.RecursiveTransactionActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -142,9 +144,9 @@ public class DashBoardActivity extends BaseActivity<ActivityDashBoardBinding, Da
             case R.id.nav_upcoming:
                 startActivity(UpcomingTransactionActivity.newIntent(this));
                 break;
-//            case R.id.nav_recursive:
-//                startActivity(RecursiveTransactionActivity.newIntent(this));
-//                break;
+            case R.id.nav_recursive:
+                startActivity(RecursiveTransactionActivity.newIntent(this));
+                break;
             case R.id.nav_setting:
                 startActivity(SettingsActivity.newIntent(this));
                 break;
