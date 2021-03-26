@@ -230,12 +230,90 @@
                     app:textColorSelected="?TextTitleColor" />
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_daily_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_calender"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    app:cardBackgroundColor="?BackGroundColorWhite"
+                    app:cardCornerRadius="@dimen/_4sdp"
+                    app:cardElevation="@dimen/_2sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_62sdp"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                android:text="Expenses"
+                                android:textColor="@color/colorRoseRed"
+                                android:textSize="@dimen/_10ssp"
+                                android:textStyle="bold"
+                                app:textAllCaps="true" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$122,000"
+                                android:textColor="?TextTitleColor"
+                                android:textSize="@dimen/_13ssp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/_1sdp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/colorDarkSubTitle" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                android:text="INCOME"
+                                android:textColor="@color/colorGreen"
+                                android:textSize="@dimen/_10ssp"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$122,000"
+                                android:textColor="?TextTitleColor"
+                                android:textSize="@dimen/_13ssp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_below="@+id/card_daily_detail"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginRight="@dimen/_8sdp"
-                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:layout_margin="@dimen/_8sdp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="?WindowBackGroundColor"
                     app:cardElevation="0dp">

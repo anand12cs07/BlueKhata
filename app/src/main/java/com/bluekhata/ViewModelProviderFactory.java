@@ -15,8 +15,6 @@ import com.bluekhata.ui.dashboard.history.filter.HistoryFilterViewModel;
 import com.bluekhata.ui.dashboard.home.HomeViewModel;
 import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarModeViewModel;
 import com.bluekhata.ui.dashboard.home.homedetails.HomeDetailViewModel;
-import com.bluekhata.ui.dashboard.home.wallets.WalletViewModal;
-import com.bluekhata.ui.dashboard.home.wallets.settings.WalletSettingViewModel;
 import com.bluekhata.ui.dashboard.transaction.TransactionViewModel;
 import com.bluekhata.ui.dashboard.transaction.datedialog.DateOptionViewModel;
 import com.bluekhata.ui.recursive.RecursiveActivityViewModel;
@@ -57,12 +55,6 @@ public class ViewModelProviderFactory extends ViewModelProvider.NewInstanceFacto
         } else if (modelClass.isAssignableFrom(CalendarModeViewModel.class)) {
             //noinspection unchecked
             return (T) new CalendarModeViewModel(dataManager, schedulerProvider);
-        } else if (modelClass.isAssignableFrom(WalletViewModal.class)) {
-            //noinspection unchecked
-            return (T) new WalletViewModal(dataManager, schedulerProvider);
-        } else if (modelClass.isAssignableFrom(WalletSettingViewModel.class)) {
-            //noinspection unchecked
-            return (T) new WalletSettingViewModel(dataManager, schedulerProvider);
         } else if (modelClass.isAssignableFrom(HomeDetailViewModel.class)) {
             //noinspection unchecked
             return (T) new HomeDetailViewModel(dataManager, schedulerProvider);

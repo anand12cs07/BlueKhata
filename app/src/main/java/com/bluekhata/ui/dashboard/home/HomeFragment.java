@@ -31,7 +31,6 @@ import com.bluekhata.ui.dashboard.DashBoardActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
 import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarBottomSheetDialog;
 import com.bluekhata.ui.dashboard.home.calendarmodes.ICalendarModeChangeListener;
-import com.bluekhata.ui.dashboard.home.wallets.OnWalletClickListener;
 import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetDialog;
 import com.bluekhata.utils.AppUtils;
 import com.bluekhata.utils.CommonUtils;
@@ -47,7 +46,7 @@ import javax.inject.Inject;
 
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel>
-        implements View.OnClickListener, RefreshListOnDismiss, ICalendarModeChangeListener, OnWalletClickListener {
+        implements View.OnClickListener, RefreshListOnDismiss, ICalendarModeChangeListener{
 
     public static final String TAG = "HomeFragment";
 
@@ -156,11 +155,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     @Override
     public void onCalendarModeChange(String mode) {
         multiHorizontalCalendar.refresh(mode, startDate.getTime(), endDate.getTime());
-    }
-
-    @Override
-    public void walletClickListener(Wallet selectedWallet) {
-
     }
 
     @Override

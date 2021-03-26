@@ -10,9 +10,6 @@ import com.bluekhata.ui.dashboard.history.filter.HistoryBottomSheetProvider;
 import com.bluekhata.ui.dashboard.home.HomeFragmentProvider;
 import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarBottomSheetProvider;
 import com.bluekhata.ui.dashboard.home.homedetails.HomeDetailFragmentProvider;
-import com.bluekhata.ui.dashboard.home.wallets.WalletBottomSheetProvider;
-import com.bluekhata.ui.dashboard.home.wallets.settings.WalletSettingActivity;
-import com.bluekhata.ui.dashboard.home.wallets.settings.WalletSettingModule;
 import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetProvider;
 import com.bluekhata.ui.dashboard.transaction.datedialog.DateOptionProvider;
 import com.bluekhata.ui.recursive.RecursiveModule;
@@ -39,14 +36,10 @@ public abstract class ActivityBuilder {
             HomeDetailFragmentProvider.class,
             TransactionBottomSheetProvider.class,
             CalendarBottomSheetProvider.class,
-            WalletBottomSheetProvider.class,
             HistoryBottomSheetProvider.class,
             DateOptionProvider.class,
             HistoryFragmentProvider.class})
     abstract DashBoardActivity bindDashBoardActivity();
-
-    @ContributesAndroidInjector(modules = WalletSettingModule.class)
-    abstract WalletSettingActivity bindWalletSettingActivity();
 
     @ContributesAndroidInjector(modules = AddCategoryModule.class)
     abstract AddCategoryActivity bindAddCategoryActivity();

@@ -8,6 +8,7 @@ import androidx.databinding.BindingAdapter;
 
 import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
+import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,7 +49,7 @@ public final class BindingUtils {
     }
 
     @BindingAdapter({"iconBackGround"})
-    public static void setCategoryIconBackGround(AppCompatImageView img, String color) {
+    public static void setCategoryIconBackGround(View img, String color) {
         ShapeDrawable bitmapDrawable = AppUtils.getDrawableBitmap(Color.parseColor(color));
         img.setBackground(bitmapDrawable);
     }
