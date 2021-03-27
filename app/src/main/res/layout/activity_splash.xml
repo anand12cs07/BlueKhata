@@ -20,7 +20,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_120sdp"
-                app:srcCompat="@drawable/ic_launcher" />
+                app:srcCompat="@drawable/ic_logo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"

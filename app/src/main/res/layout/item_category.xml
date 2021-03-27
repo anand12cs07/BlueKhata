@@ -7,18 +7,17 @@
             name="viewModel"
             type="com.bluekhata.ui.dashboard.category.CategoryItemViewModel" />
     </data>
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?BackGroundColorWhite"
-        android:orientation="vertical"
-        android:padding="@dimen/_10sdp">
-
+        app:cardBackgroundColor="?BackGroundColorWhite"
+        android:layout_marginRight="@dimen/_8sdp"
+        app:cardCornerRadius="@dimen/_4sdp">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_icon"
@@ -32,15 +31,19 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_60sdp"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:gravity="center_horizontal"
+                android:ellipsize="marquee"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:text="@{viewModel.categoryTitle}"
                 android:textColor="?TextTitleColor"
                 android:textSize="@dimen/_14ssp" />
+
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </layout>

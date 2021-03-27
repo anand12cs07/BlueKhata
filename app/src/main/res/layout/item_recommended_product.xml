@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="recommendedProductViewModel"
+            type="com.bluekhata.ui.category.ProductItemViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:cardBackgroundColor="?BackGroundColorWhite"
+        app:cardCornerRadius="@dimen/_4sdp">
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_125sdp"
+                android:id="@+id/img_product"
+                iconText="@{recommendedProductViewModel.iconText}"
+                imgWithoutCache="@{recommendedProductViewModel.url}"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_4sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="2"
+                    android:ellipsize="marquee"
+                    android:gravity="top"
+                    android:id="@+id/tv_title"
+                    android:textColor="?TextTitleColor"
+                    android:textSize="@dimen/_11ssp"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:text="@{recommendedProductViewModel.title}"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:gravity="bottom"
+                    android:id="@+id/tv_mrp_amount"
+                    android:textColor="?TextTitleColor"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_toLeftOf="@+id/tv_offer_amount"
+                    android:layout_alignBottom="@+id/tv_offer_amount"
+                    android:alpha="0.8"
+                    android:textSize="@dimen/_8ssp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:text='@{"₹" + recommendedProductViewModel.mrpAmount}'/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:gravity="bottom"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:id="@+id/tv_offer_amount"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_9ssp"
+                    android:text='@{"₹" + recommendedProductViewModel.offerAmount}'/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

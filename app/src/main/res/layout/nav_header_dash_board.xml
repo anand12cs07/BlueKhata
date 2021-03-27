@@ -23,7 +23,7 @@
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_8sdp"
             android:contentDescription="@string/nav_header_desc"
-            app:srcCompat="@drawable/ic_launcher" />
+            app:srcCompat="@drawable/ic_logo" />
 
         <TextView
             android:layout_width="match_parent"

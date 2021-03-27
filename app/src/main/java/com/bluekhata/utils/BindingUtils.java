@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -49,9 +51,17 @@ public final class BindingUtils {
     }
 
     @BindingAdapter({"iconBackGround"})
-    public static void setCategoryIconBackGround(View img, String color) {
+    public static void setIconBackGround(View img, String color) {
         ShapeDrawable bitmapDrawable = AppUtils.getDrawableBitmap(Color.parseColor(color));
         img.setBackground(bitmapDrawable);
+    }
+
+    @BindingAdapter({"iconText"})
+    public static void setIconText(View img, String text) {
+        if (text != null && !text.isEmpty()) {
+            TextDrawable textDrawable = new TextDrawable(img.getContext(), text);
+            img.setBackground(textDrawable);
+        }
     }
 
     @BindingAdapter({"iconImage"})
@@ -68,6 +78,20 @@ public final class BindingUtils {
     @BindingAdapter({"tagEditImage"})
     public static void setTagEditImage(AppCompatImageView img, boolean isEqual) {
         img.setImageResource(isEqual ? R.drawable.ic_done : R.drawable.ic_edit);
+    }
+
+    @BindingAdapter({"imgWithCache"})
+    public static void setImageWithCache(AppCompatImageView img, String url) {
+        if (url != null && !url.isEmpty()) {
+            Glide.with(img).load(url).into(img);
+        }
+    }
+
+    @BindingAdapter({"imgWithoutCache"})
+    public static void setImageWithoutCache(AppCompatImageView img, String url) {
+        if (url != null && !url.isEmpty()) {
+            Glide.with(img).load(url).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(img);
+        }
     }
 
     private static int resourceStringToResourceId(Context context, String resInString, String resClass) {

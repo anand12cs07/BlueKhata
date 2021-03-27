@@ -48,7 +48,7 @@ public class RecursiveTransactionAdapter extends RecyclerView.Adapter<RecursiveT
         holder.tvData.setText(recurrenceDetail.getRecurrence().getRecurrenceTitle());
         holder.tvAmount.setText(CommonUtils.getFormattedAmount(recurrenceDetail.getTransaction().getTransactionAmount()));
 
-        BindingUtils.setCategoryIconBackGround(holder.imgIcon, recurrenceDetail.getCategory().getCatColor());
+        BindingUtils.setIconBackGround(holder.imgIcon, recurrenceDetail.getCategory().getCatColor());
         BindingUtils.setCategoryIconImage(holder.imgIcon, recurrenceDetail.getCategory().getCatIcon());
     }
 

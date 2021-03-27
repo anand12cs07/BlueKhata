@@ -49,7 +49,7 @@ public class UpcomingTransactionAdapter extends RecyclerView.Adapter<UpcomingTra
         holder.tvAmount.setText(CommonUtils.getFormattedAmount(upcomingTransaction.getTransaction().getTransactionAmount()));
 
         BindingUtils.setCategoryIconImage(holder.imgIcon,upcomingTransaction.getCategory().getCatIcon());
-        BindingUtils.setCategoryIconBackGround(holder.imgIcon, upcomingTransaction.getCategory().getCatColor());
+        BindingUtils.setIconBackGround(holder.imgIcon, upcomingTransaction.getCategory().getCatColor());
     }
 
     @Override

@@ -19,14 +19,18 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bluekhata.BR;
 import com.bluekhata.R;
 import com.bluekhata.ViewModelProviderFactory;
+import com.bluekhata.data.model.db.Category;
 import com.bluekhata.data.model.db.Wallet;
 import com.bluekhata.data.model.db.custom.TransactionWithCategory;
+import com.bluekhata.data.model.other.Product;
 import com.bluekhata.databinding.FragmentHomeBinding;
 import com.bluekhata.ui.base.BaseFragment;
+import com.bluekhata.ui.category.CategoryAdapter;
 import com.bluekhata.ui.dashboard.DashBoardActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
 import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarBottomSheetDialog;
@@ -58,6 +62,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
     @Inject
     HomeAdapter expenseAdapter, incomeAdapter;
+
+    @Inject
+    CategoryAdapter categoryAdapter;
+
+    @Inject
+    RecommendedProductAdapter recommendedProductAdapter;
 
     private HomeViewModel viewModel;
 
@@ -107,11 +117,14 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         setUpRecyclerView();
         setUpExpenseListObserver();
         setUpIncomeListObserver();
+        seUpRecommendedCategories();
 
+        viewModel.fetchRecommendedCategories();
         homeBinding.fab.setOnClickListener(this);
 
         setUpFabAnim();
         setUpCalender();
+        setUpRecommendedProducts();
 
         return view;
     }
@@ -206,6 +219,15 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         });
     }
 
+    private void seUpRecommendedCategories() {
+        viewModel.getCategoryMutableLiveData().observe(this, new Observer<List<Category>>() {
+            @Override
+            public void onChanged(@Nullable List<Category> categories) {
+                categoryAdapter.refreshList(categories);
+            }
+        });
+    }
+
     private void showBottomSheet() {
         bottomSheetDialogFragment = new TransactionBottomSheetDialog();
         bottomSheetDialogFragment.show(getChildFragmentManager(), "add");
@@ -273,6 +295,18 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         incomeAdapter = new HomeAdapter(getActivity());
         homeBinding.recyclerViewIncome.setAdapter(incomeAdapter);
         homeBinding.recyclerViewIncome.setNestedScrollingEnabled(false);
+
+        homeBinding.recyclerViewRecommendedCategory.setLayoutManager(
+                new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false)
+        );
+        homeBinding.recyclerViewRecommendedCategory.setAdapter(categoryAdapter);
+        homeBinding.recyclerViewRecommendedCategory.setNestedScrollingEnabled(false);
+
+        homeBinding.recyclerViewRecommendedProducts.setLayoutManager(
+                new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false)
+        );
+        homeBinding.recyclerViewRecommendedProducts.setAdapter(recommendedProductAdapter);
+        homeBinding.recyclerViewRecommendedProducts.setNestedScrollingEnabled(false);
     }
 
     private void setUpFabAnim() {
@@ -299,5 +333,10 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
         progressAnimator.setDuration(1500);
         progressAnimator.start();
+    }
+
+    private void setUpRecommendedProducts(){
+        List<Product> products = Product.getInitialProducts();
+        recommendedProductAdapter.refreshList(products);
     }
 }

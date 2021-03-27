@@ -4,8 +4,6 @@ import android.app.Activity;
 
 import androidx.multidex.MultiDexApplication;
 
-import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.core.CrashlyticsCore;
 import com.bluekhata.di.component.DaggerAppComponent;
 import com.bluekhata.di.dependency.AppDependency;
 
@@ -14,7 +12,6 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import io.fabric.sdk.android.Fabric;
 
 
 /**
@@ -37,8 +34,6 @@ public class AppController extends MultiDexApplication implements HasActivityInj
                 .build()
                 .inject(this);
 
-        CrashlyticsCore core = new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build();
-        Fabric.with(this, new Crashlytics.Builder().core(core).build());
     }
 
     @Override

@@ -171,54 +171,6 @@
 
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_recommended_category_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginRight="@dimen/_8sdp"
-                    android:background="?WindowBackGroundColor"
-                    android:padding="@dimen/_5sdp"
-                    android:text="Recommended Categories"
-                    android:textColor="?TextTitleColor"
-                    android:textSize="@dimen/_14ssp" />
-
-                <com.bluekhata.utils.RecyclerViewEmptySupport
-                    android:id="@+id/recyclerViewRecommendedCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginRight="@dimen/_8sdp"
-                    android:layoutAnimation="@anim/layout_anim_fall_down"
-                    android:orientation="horizontal"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_recommended_product_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginRight="@dimen/_8sdp"
-                    android:background="?WindowBackGroundColor"
-                    android:padding="@dimen/_5sdp"
-                    android:text="Recommended Products"
-                    android:textColor="?TextTitleColor"
-                    android:textSize="@dimen/_14ssp" />
-
-                <com.bluekhata.utils.RecyclerViewEmptySupport
-                    android:id="@+id/recyclerViewRecommendedProducts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginRight="@dimen/_8sdp"
-                    android:layoutAnimation="@anim/layout_anim_fall_down"
-                    android:orientation="horizontal"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
                 <com.multicalenderview.MultiCalendarView
                     android:id="@+id/multiCalendarView"
                     android:layout_width="match_parent"
@@ -422,6 +374,54 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_recommended_category_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:background="?WindowBackGroundColor"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Recommended Categories"
+                    android:textColor="?TextTitleColor"
+                    android:textSize="@dimen/_14ssp" />
+
+                <com.bluekhata.utils.RecyclerViewEmptySupport
+                    android:id="@+id/recyclerViewRecommendedCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:layoutAnimation="@anim/layout_anim_fall_down"
+                    android:orientation="horizontal"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_recommended_product_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:background="?WindowBackGroundColor"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Recommended Products"
+                    android:textColor="?TextTitleColor"
+                    android:textSize="@dimen/_14ssp" />
+
+                <com.bluekhata.utils.RecyclerViewEmptySupport
+                    android:id="@+id/recyclerViewRecommendedProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:layoutAnimation="@anim/layout_anim_fall_down"
+                    android:orientation="horizontal"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
