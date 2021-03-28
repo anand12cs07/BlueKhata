@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?BackGroundColorWhite"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/_11sdp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="More"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="?TextTitleColor"
+            android:textSize="@dimen/_12ssp"
+            android:id="@+id/btn_more"/>
+    </LinearLayout>
+</layout>
