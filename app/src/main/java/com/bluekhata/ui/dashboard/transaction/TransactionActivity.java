@@ -2,18 +2,18 @@ package com.bluekhata.ui.dashboard.transaction;
 
 import android.app.Dialog;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bluekhata.databinding.ActivityAddTransactionBinding;
+import com.bluekhata.ui.base.BaseActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
@@ -23,12 +23,10 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 
 import com.bluekhata.ui.dashboard.transaction.datedialog.DateOptionDialog;
@@ -44,9 +42,7 @@ import com.bluekhata.data.model.db.Reminder;
 import com.bluekhata.data.model.db.Tag;
 import com.bluekhata.data.model.db.Transaction;
 import com.bluekhata.data.model.db.custom.TransactionWithTag;
-import com.bluekhata.databinding.BottomsheetAddTransactionBinding;
 import com.bluekhata.ui.adapter.CategorySelectionAdapter;
-import com.bluekhata.ui.base.BaseBottomSheetDialog;
 import com.bluekhata.ui.dashboard.transaction.datedialog.DateOptionListener;
 import com.bluekhata.utils.BindingUtils;
 import com.bluekhata.utils.CalendarUtils;
@@ -63,7 +59,7 @@ import javax.inject.Inject;
  * Created by aman on 01-09-2018.
  */
 
-public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<BottomsheetAddTransactionBinding, TransactionViewModel>
+public class TransactionActivity extends BaseActivity<ActivityAddTransactionBinding, TransactionViewModel>
         implements View.OnClickListener, NachoTextView.OnChipClickListener, DateOptionListener,
         CategorySelectionAdapter.OnItemClickListener, RadioGroup.OnCheckedChangeListener {
 
@@ -71,7 +67,7 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
     ViewModelProviderFactory factory;
 
     private TransactionViewModel viewModel;
-    private BottomsheetAddTransactionBinding transactionBinding;
+    private ActivityAddTransactionBinding transactionBinding;
 
     private Dialog dialog;
     private Date selectedDate;
@@ -96,7 +92,7 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
 
     @Override
     public int getLayoutId() {
-        return R.layout.bottomsheet_add_transaction;
+        return R.layout.activity_add_transaction;
     }
 
     @Override
@@ -106,19 +102,13 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
     }
 
     @Override
-    public void setupDialog(Dialog dialog, int style) {
-        super.setupDialog(dialog, style);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         transactionBinding = getViewDataBinding();
 
-        setBackgroundTransparent(transactionBinding.getRoot());
-        showExpandedBottomSheet(dialog);
-
-        isToEdit = getTag().equals("update");
-
-        if (getArguments() != null) {
-            transaction = (Transaction) getArguments().getSerializable("transaction");
-            tagList = (ArrayList<Tag>) getArguments().getSerializable("tags");
-        }
+        isToEdit = getIntent().getStringExtra("isToEdit").equals("update");
+        transaction = (Transaction) getIntent().getSerializableExtra("transaction");
+        tagList = (ArrayList<Tag>) getIntent().getSerializableExtra("tags");
 
         dateOption = new DateOptionDialog();
         dateOption.setDateOptionListener(this);
@@ -131,6 +121,9 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
         setUpTransactionIdObserver();
         setUpCategoryObserver();
         setUpCategoryListAdapter();
+
+        setSupportActionBar(transactionBinding.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         transactionBinding.tvOne.setOnClickListener(this);
         transactionBinding.tvTwo.setOnClickListener(this);
@@ -158,19 +151,19 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
         transactionBinding.toggleCategory.setOnCheckedChangeListener(this);
 
         attachData();
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         transactionBinding.nachoNotes.addChipTerminator('\n', ChipTerminatorHandler.BEHAVIOR_CHIPIFY_ALL);
-//        notes.enableEditChipOnTouch(true, true);
         transactionBinding.nachoNotes.setOnChipClickListener(this);
 
         setUpTagListObserver();
         viewModel.fetchTagList();
+    }
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -198,7 +191,7 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
                 viewModel.removeOneDigit();
                 break;
             case R.id.img_cal:
-                dateOption.show(getChildFragmentManager());
+                dateOption.show(getSupportFragmentManager());
                 dateOption.setData(selectedDate, selectedRecurrence, selectedReminder);
                 break;
             case R.id.img_ok:
@@ -249,13 +242,6 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
 //        Toast.makeText(getContext(), transactionBinding.nachoNotes.getChipValues().size() + "", Toast.LENGTH_SHORT).show();
     }
 
-
-    @Override
-    public void onDismiss(DialogInterface dialog) {
-        super.onDismiss(dialog);
-        bottomSheetDismiss.onDismiss();
-    }
-
     public void setTransactionBottomSheetDismiss(RefreshListOnDismiss bottomSheetDismiss) {
         this.bottomSheetDismiss = bottomSheetDismiss;
     }
@@ -279,13 +265,13 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
     }
 
     private void setUpCategoryDialog() {
-        dialog = new Dialog(getContext(), R.style.Theme_Dialog);
+        dialog = new Dialog(this, R.style.Theme_Dialog);
         dialog.setContentView(R.layout.dialog_category);
         dialog.setCanceledOnTouchOutside(false);
 
         recyclerViewCategory = dialog.findViewById(R.id.recyclerView);
-        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewCategory.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewCategory.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         adapter = new CategorySelectionAdapter(this);
         recyclerViewCategory.setEmptyView(dialog.findViewById(R.id.empty));
         recyclerViewCategory.setAdapter(adapter);
@@ -323,7 +309,8 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
             @Override
             public void onChanged(@Nullable Boolean aBoolean) {
                 if (aBoolean && !viewModel.getEqual().get()) {
-                    dismiss();
+                    setResult(RESULT_OK,new Intent());
+                    finish();
                 }
             }
         });
@@ -348,7 +335,7 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
                 transactionBinding.toggleCategory.setOnCheckedChangeListener(null);
                 transactionBinding.toggleCategory.check(
                         selectedCategory.getCatType() == 0 ? R.id.expense : R.id.income);
-                transactionBinding.toggleCategory.setOnCheckedChangeListener(TransactionBottomSheetDialog.this);
+                transactionBinding.toggleCategory.setOnCheckedChangeListener(TransactionActivity.this);
 
             }
         });
@@ -358,7 +345,7 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
         viewModel.getTagList().observe(this, new Observer<List<Tag>>() {
             @Override
             public void onChanged(@Nullable List<Tag> tags) {
-                tagAdapter = new ArrayAdapter<Tag>(getActivity(), android.R.layout.simple_dropdown_item_1line, tags);
+                tagAdapter = new ArrayAdapter<Tag>(TransactionActivity.this, android.R.layout.simple_dropdown_item_1line, tags);
                 transactionBinding.nachoNotes.setAdapter(tagAdapter);
             }
         });
@@ -380,24 +367,4 @@ public class TransactionBottomSheetDialog extends BaseBottomSheetDialog<Bottomsh
         transactionBinding.categoryTitle.setText(category.getCatTitle());
     }
 
-    private void setBackgroundTransparent(View contentView) {
-        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) contentView.getParent())
-                .getLayoutParams();
-        CoordinatorLayout.Behavior behavior = params.getBehavior();
-        ((View) contentView.getParent()).setBackgroundColor(getResources().getColor(android.R.color.transparent));
-    }
-
-    private void showExpandedBottomSheet(Dialog dialog) {
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-
-                BottomSheetDialog d = (BottomSheetDialog) dialog;
-
-                FrameLayout bottomSheet = (FrameLayout) d.findViewById(R.id.design_bottom_sheet);
-
-                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
-            }
-        });
-    }
 }

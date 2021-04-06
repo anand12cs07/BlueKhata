@@ -10,7 +10,8 @@ import com.bluekhata.ui.dashboard.history.filter.HistoryBottomSheetProvider;
 import com.bluekhata.ui.dashboard.home.HomeFragmentProvider;
 import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarBottomSheetProvider;
 import com.bluekhata.ui.dashboard.home.homedetails.HomeDetailFragmentProvider;
-import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetProvider;
+import com.bluekhata.ui.dashboard.transaction.TransactionActivity;
+import com.bluekhata.ui.dashboard.transaction.TransactionActivityProvider;
 import com.bluekhata.ui.dashboard.transaction.datedialog.DateOptionProvider;
 import com.bluekhata.ui.recursive.RecursiveModule;
 import com.bluekhata.ui.recursive.RecursiveTransactionActivity;
@@ -34,12 +35,14 @@ public abstract class ActivityBuilder {
             CategoryFragmentProvider.class,
             HomeFragmentProvider.class,
             HomeDetailFragmentProvider.class,
-            TransactionBottomSheetProvider.class,
             CalendarBottomSheetProvider.class,
             HistoryBottomSheetProvider.class,
             DateOptionProvider.class,
             HistoryFragmentProvider.class})
     abstract DashBoardActivity bindDashBoardActivity();
+
+    @ContributesAndroidInjector
+    abstract TransactionActivity bindTransactionActivity();
 
     @ContributesAndroidInjector(modules = AddCategoryModule.class)
     abstract AddCategoryActivity bindAddCategoryActivity();
@@ -54,7 +57,7 @@ public abstract class ActivityBuilder {
     abstract UpcomingTransactionActivity bindUpcomingTransactionActivity();
 
     @ContributesAndroidInjector(modules = {
-            TransactionBottomSheetProvider.class,
+            TransactionActivityProvider.class,
             DateOptionProvider.class,
             RecursiveModule.class})
     abstract RecursiveTransactionActivity bindRecursiveTransactionActivity();

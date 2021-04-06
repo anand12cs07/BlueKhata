@@ -2,8 +2,8 @@ package com.bluekhata.ui.dashboard.home;
 
 
 import android.animation.ObjectAnimator;
-import android.graphics.Color;
-import android.graphics.drawable.ShapeDrawable;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +25,6 @@ import com.bluekhata.BR;
 import com.bluekhata.R;
 import com.bluekhata.ViewModelProviderFactory;
 import com.bluekhata.data.model.db.Category;
-import com.bluekhata.data.model.db.Wallet;
 import com.bluekhata.data.model.db.custom.TransactionWithCategory;
 import com.bluekhata.data.model.other.Product;
 import com.bluekhata.databinding.FragmentHomeBinding;
@@ -35,8 +34,7 @@ import com.bluekhata.ui.dashboard.DashBoardActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
 import com.bluekhata.ui.dashboard.home.calendarmodes.CalendarBottomSheetDialog;
 import com.bluekhata.ui.dashboard.home.calendarmodes.ICalendarModeChangeListener;
-import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetDialog;
-import com.bluekhata.utils.AppUtils;
+import com.bluekhata.ui.dashboard.transaction.TransactionActivity;
 import com.bluekhata.utils.CommonUtils;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 import com.multicalenderview.HorizontalCalendar;
@@ -48,7 +46,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_DAILY_TYPE;
 import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_MONTHLY_TYPE;
 import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_WEEKLY_TYPE;
 import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_YEARLY_TYPE;
@@ -82,7 +79,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
     private HorizontalCalendar multiHorizontalCalendar;
     private HorizontalCalendar.Builder builderMultiCalendar;
-    private TransactionBottomSheetDialog bottomSheetDialogFragment;
 
     private double expenses, incomes;
     private Calendar startDate, endDate;
@@ -178,11 +174,19 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     @Override
     public void onDismiss() {
         // on Transaction Bottom Sheet Dialog dismiss
-        Date date = multiHorizontalCalendar.getSelectedDate();
-        onDateCalenderSelectListener(
-                multiHorizontalCalendar.getStartDate(date),
-                multiHorizontalCalendar.getEndDate(date)
-        );
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001 && resultCode == Activity.RESULT_OK) {
+            Date date = multiHorizontalCalendar.getSelectedDate();
+            onDateCalenderSelectListener(
+                    multiHorizontalCalendar.getStartDate(date),
+                    multiHorizontalCalendar.getEndDate(date)
+            );
+        }
     }
 
     private void setUpHeader() {
@@ -234,9 +238,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     }
 
     private void showBottomSheet() {
-        bottomSheetDialogFragment = new TransactionBottomSheetDialog();
-        bottomSheetDialogFragment.show(getChildFragmentManager(), "add");
-        bottomSheetDialogFragment.setTransactionBottomSheetDismiss(this);
+        Intent intent = new Intent(getContext(), TransactionActivity.class);
+        intent.putExtra("isToEdit","add");
+        startActivityForResult(intent,1001);
     }
 
     private void setUpCalender() {

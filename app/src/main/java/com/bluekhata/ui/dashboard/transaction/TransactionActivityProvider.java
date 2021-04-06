@@ -5,7 +5,7 @@ import dagger.android.ContributesAndroidInjector;
 
 
 @Module
-public abstract class TransactionBottomSheetProvider {
+public abstract class TransactionActivityProvider {
     @ContributesAndroidInjector
-    abstract TransactionBottomSheetDialog provideTransactionBottomSheet();
+    abstract TransactionActivity provideTransactionBottomSheet();
 }

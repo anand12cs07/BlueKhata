@@ -3,11 +3,11 @@ package com.bluekhata.ui.dashboard.history;
 import androidx.fragment.app.FragmentActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetDialog;
 import com.bluekhata.utils.CalendarUtils;
 import com.bluekhata.R;
 import com.bluekhata.data.model.db.custom.TransactionWithTagAndCategory;
@@ -25,7 +25,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private boolean isSearchApplicable = false;
 
     private FragmentActivity context;
-    private TransactionBottomSheetDialog bottomSheetDialogFragment;
 
     public HistoryAdapter(FragmentActivity context) {
         this.list = new ArrayList<>();

@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.bluekhata.ui.dashboard.transaction.TransactionViewModel" />
     </data>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
+        android:fillViewport="true"
         android:orientation="vertical"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
@@ -19,16 +22,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/appBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/AppTheme.AppBarOverlay"
+                    app:elevation="0dp">
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark"
+                        app:popupTheme="@style/AppTheme.PopupOverlay" />
+                </com.google.android.material.appbar.AppBarLayout>
 
                 <LinearLayout
                     android:id="@+id/layout_add_heading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_40sdp"
                     android:background="?PrimaryColor"
                     android:orientation="vertical"
                     android:paddingLeft="@dimen/_7sdp"
@@ -55,13 +73,13 @@
 
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="?BackGroundColorWhite"
                     android:fillViewport="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -124,11 +142,16 @@
                         <com.hootsuite.nachos.NachoTextView
                             android:id="@+id/nacho_notes"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:background="?BackGroundColorWhite"
                             android:completionThreshold="1"
+                            android:focusable="true"
+                            android:focusedByDefault="true"
+                            android:gravity="bottom"
                             android:hint="Add Tags"
                             android:padding="@dimen/_5sdp">
+
                             <requestFocus />
                         </com.hootsuite.nachos.NachoTextView>
 
@@ -580,11 +603,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_14sdp"
-                app:backgroundTint="@color/colorAccent"
                 android:tint="@color/white"
+                app:backgroundTint="@color/colorAccent"
                 app:fabCustomSize="@dimen/_48sdp"
                 app:layout_anchor="@id/layout_add_heading"
-                app:layout_anchorGravity="top|right"
+                app:layout_anchorGravity="bottom|right"
                 app:srcCompat="@drawable/ic_language" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

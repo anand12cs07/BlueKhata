@@ -2,6 +2,8 @@ package com.bluekhata.ui.recursive;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 
 import com.bluekhata.data.model.db.custom.RecurrenceDetail;
-import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetDialog;
+import com.bluekhata.ui.dashboard.transaction.TransactionActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
 import com.bluekhata.utils.RecyclerViewSwipeHelper;
 import com.bluekhata.BR;
@@ -97,7 +99,7 @@ public class RecursiveTransactionActivity extends BaseActivity<ActivityRecursive
 
     @Override
     public void onDismiss() {
-        viewModel.fetchRecurrenceDetail(new Date().getTime());
+//        viewModel.fetchRecurrenceDetail(new Date().getTime());
     }
 
     private void setUpSwipeButtons() {
@@ -112,22 +114,25 @@ public class RecursiveTransactionActivity extends BaseActivity<ActivityRecursive
                         new RecyclerViewSwipeHelper.UnderlayButtonClickListener() {
                             @Override
                             public void onClick(int pos) {
-
-                                TransactionBottomSheetDialog bottomSheetDialogFragment =
-                                        new TransactionBottomSheetDialog();
-
+                                Intent intent = new Intent(RecursiveTransactionActivity.this, TransactionActivity.class);
                                 RecurrenceDetail recurrenceDetail = transactionAdapter.getList().get(pos);
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("transaction", recurrenceDetail.getTransaction());
-                                bundle.putSerializable("tags", new ArrayList<>(recurrenceDetail.getTagList()));
-                                bottomSheetDialogFragment.setArguments(bundle);
-                                bottomSheetDialogFragment.show(getSupportFragmentManager(), "update");
-                                bottomSheetDialogFragment.setTransactionBottomSheetDismiss(RecursiveTransactionActivity.this);
+                                intent.putExtra("transaction", recurrenceDetail.getTransaction());
+                                intent.putExtra("tags", new ArrayList<>(recurrenceDetail.getTagList()));
+                                intent.putExtra("isToEdit","update");
+                                startActivityForResult(intent,1001);
                             }
                         }
                 ));
             }
         };
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001 && resultCode == Activity.RESULT_OK) {
+            viewModel.fetchRecurrenceDetail(new Date().getTime());
+        }
     }
 
     private void observeRecurrenceList() {

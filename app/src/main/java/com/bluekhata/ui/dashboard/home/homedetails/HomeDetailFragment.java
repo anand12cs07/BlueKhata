@@ -4,18 +4,23 @@ package com.bluekhata.ui.dashboard.home.homedetails;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,12 +34,13 @@ import com.bluekhata.data.model.db.custom.TransactionWithTag;
 import com.bluekhata.databinding.FragmentTransactionDetailBinding;
 import com.bluekhata.ui.base.BaseFragment;
 import com.bluekhata.ui.dashboard.DashBoardActivity;
-import com.bluekhata.ui.dashboard.transaction.TransactionBottomSheetDialog;
+import com.bluekhata.ui.dashboard.transaction.TransactionActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
 import com.bluekhata.utils.RecyclerViewEmptySupport;
 import com.bluekhata.utils.RecyclerViewSwipeHelper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -150,11 +156,11 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
 
     @Override
     public void onDismiss() {
-        viewModel.fetchCategoryDetail(
-                getArguments().getLong(SELECTED_CATEGORY_ID),
-                getArguments().getLong(SELECTED_START_DATE),
-                getArguments().getLong(SELECTED_END_DATE)
-        );
+//        viewModel.fetchCategoryDetail(
+//                getArguments().getLong(SELECTED_CATEGORY_ID),
+//                getArguments().getLong(SELECTED_START_DATE),
+//                getArguments().getLong(SELECTED_END_DATE)
+//        );
     }
 
     @Override
@@ -182,7 +188,7 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
                         new RecyclerViewSwipeHelper.UnderlayButtonClickListener() {
                             @Override
                             public void onClick(int pos) {
-                               setAlertDialog(pos);
+                                setAlertDialog(pos);
                             }
                         }
                 ));
@@ -195,17 +201,13 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
                         new RecyclerViewSwipeHelper.UnderlayButtonClickListener() {
                             @Override
                             public void onClick(int pos) {
-
-                                TransactionBottomSheetDialog bottomSheetDialogFragment =
-                                        new TransactionBottomSheetDialog();
-
+                                Intent intent = new Intent(getContext(), TransactionActivity.class);
                                 TransactionWithTag transactionWithTag = adapter.getList().get(pos);
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("transaction", transactionWithTag.getTransaction());
-                                bundle.putSerializable("tags", new ArrayList<>(transactionWithTag.getTags()));
-                                bottomSheetDialogFragment.setArguments(bundle);
-                                bottomSheetDialogFragment.show(getChildFragmentManager(), "update");
-                                bottomSheetDialogFragment.setTransactionBottomSheetDismiss(HomeDetailFragment.this);
+                                intent.putExtra("transaction", transactionWithTag.getTransaction());
+                                intent.putExtra("tags", new ArrayList<>(transactionWithTag.getTags()));
+                                intent.putExtra("isToEdit", "update");
+                                startActivityForResult(intent,1001);
+//                                bottomSheetDialogFragment.setTransactionBottomSheetDismiss(HomeDetailFragment.this);
                             }
                         }
                 ));
@@ -213,7 +215,19 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
         };
     }
 
-    private void setAlertDialog(final int position){
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001 && resultCode == Activity.RESULT_OK) {
+            viewModel.fetchCategoryDetail(
+                    getArguments().getLong(SELECTED_CATEGORY_ID),
+                    getArguments().getLong(SELECTED_START_DATE),
+                    getArguments().getLong(SELECTED_END_DATE)
+            );
+        }
+    }
+
+    private void setAlertDialog(final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Alert");
         builder.setMessage("Are you sure to delete this item?");
