@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bluekhata.R;
 import com.bluekhata.data.model.db.Category;
+import com.bluekhata.databinding.ItemCategoryTransactionBinding;
 import com.bluekhata.ui.base.BaseViewHolder;
 import com.bluekhata.ui.dashboard.category.CategoryItemViewModel;
 import com.bluekhata.databinding.ItemCategoryBinding;
@@ -30,9 +32,8 @@ public class CategorySelectionAdapter extends RecyclerView.Adapter<CategorySelec
     @NonNull
     @Override
     public CategorySelectionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemCategoryBinding itemCategoryBinding = ItemCategoryBinding.inflate(
-                LayoutInflater.from(parent.getContext()), parent, false
-        );
+        ItemCategoryTransactionBinding itemCategoryBinding = ItemCategoryTransactionBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false);
         return new CategorySelectionAdapter.ViewHolder(itemCategoryBinding);
     }
 
@@ -58,9 +59,9 @@ public class CategorySelectionAdapter extends RecyclerView.Adapter<CategorySelec
 
     public class ViewHolder extends BaseViewHolder implements View.OnClickListener {
         private CategoryItemViewModel viewModel;
-        private ItemCategoryBinding itemCategoryBinding;
+        private ItemCategoryTransactionBinding itemCategoryBinding;
 
-        public ViewHolder(ItemCategoryBinding itemView) {
+        public ViewHolder(ItemCategoryTransactionBinding itemView) {
             super(itemView.getRoot());
             itemCategoryBinding = itemView;
 
