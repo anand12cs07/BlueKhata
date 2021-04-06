@@ -9,4 +9,8 @@ public interface PreferencesHelper {
     void setAppThemeChange(boolean isAppThemeChange);
 
     boolean isAppThemeChange();
+
+    String getSelectedCalenderType();
+
+    void setSelectedCalenderType(String calenderType);
 }

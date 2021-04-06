@@ -3,6 +3,7 @@ package com.bluekhata.ui.dashboard;
 import androidx.databinding.ObservableField;
 
 import com.bluekhata.data.DataManager;
+import com.bluekhata.data.local.prefs.AppPreferencesHelper;
 import com.bluekhata.ui.base.BaseViewModel;
 import com.bluekhata.utils.rx.SchedulerProvider;
 
@@ -20,5 +21,11 @@ public class DashBoardViewModel extends BaseViewModel<DashBoardNavigator> {
 
     public void setAppTitle(String title){
         appTitle.set(title);
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        getDataManager().setSelectedCalenderType(AppPreferencesHelper.PREF_KEY_DAILY_TYPE);
     }
 }

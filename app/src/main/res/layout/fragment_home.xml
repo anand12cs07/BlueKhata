@@ -190,6 +190,7 @@
                     android:layout_marginRight="@dimen/_8sdp"
                     app:cardBackgroundColor="?BackGroundColorWhite"
                     app:cardCornerRadius="@dimen/_4sdp"
+                    android:visibility="gone"
                     app:cardElevation="@dimen/_2sdp">
 
                     <LinearLayout
@@ -265,7 +266,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_below="@+id/card_daily_detail"
-                    android:layout_margin="@dimen/_8sdp"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="?WindowBackGroundColor"
                     app:cardElevation="0dp">
@@ -278,8 +281,8 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_8sdp"
                             android:background="?WindowBackGroundColor"
-                            android:padding="@dimen/_5sdp"
                             android:text="Expenses"
                             android:textColor="?TextTitleColor"
                             android:textSize="@dimen/_14ssp" />
@@ -326,7 +329,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="?WindowBackGroundColor"
-                            android:padding="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginBottom="@dimen/_8sdp"
                             android:text="Income"
                             android:textColor="?TextTitleColor"
                             android:textSize="@dimen/_14ssp" />
@@ -381,8 +385,8 @@
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginRight="@dimen/_8sdp"
+                    android:visibility="gone"
                     android:background="?WindowBackGroundColor"
-                    android:padding="@dimen/_5sdp"
                     android:text="Recommended Categories"
                     android:textColor="?TextTitleColor"
                     android:textSize="@dimen/_14ssp" />
@@ -394,6 +398,7 @@
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginRight="@dimen/_8sdp"
+                    android:visibility="gone"
                     android:layoutAnimation="@anim/layout_anim_fall_down"
                     android:orientation="horizontal"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
@@ -407,6 +412,7 @@
                     android:layout_marginRight="@dimen/_8sdp"
                     android:background="?WindowBackGroundColor"
                     android:padding="@dimen/_5sdp"
+                    android:visibility="gone"
                     android:text="Recommended Products"
                     android:textColor="?TextTitleColor"
                     android:textSize="@dimen/_14ssp" />
@@ -419,6 +425,7 @@
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginRight="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
+                    android:visibility="gone"
                     android:layoutAnimation="@anim/layout_anim_fall_down"
                     android:orientation="horizontal"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior" />

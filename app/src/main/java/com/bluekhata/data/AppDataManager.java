@@ -66,6 +66,16 @@ public class AppDataManager implements DataManager {
         return mPreferencesHelper.isAppThemeChange();
     }
 
+    @Override
+    public void setSelectedCalenderType(String calenderType) {
+        mPreferencesHelper.setSelectedCalenderType(calenderType);
+    }
+
+    @Override
+    public String getSelectedCalenderType() {
+        return mPreferencesHelper.getSelectedCalenderType();
+    }
+
     // Add Edit Category Module
     @Override
     public Observable<Boolean> insertCategory(Category category) {

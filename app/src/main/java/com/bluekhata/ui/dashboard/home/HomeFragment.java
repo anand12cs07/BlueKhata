@@ -48,6 +48,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_DAILY_TYPE;
+import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_MONTHLY_TYPE;
+import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_WEEKLY_TYPE;
+import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_YEARLY_TYPE;
+
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel>
         implements View.OnClickListener, RefreshListOnDismiss, ICalendarModeChangeListener{
@@ -243,6 +248,15 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                 onDateCalenderSelectListener(startDate, endDate);
             }
         });
+    }
+
+    private String getSelectedSavedMode(String mode) {
+        switch (mode) {
+            case PREF_KEY_WEEKLY_TYPE: return HorizontalCalendar.MODE_WEEKLY;
+            case PREF_KEY_MONTHLY_TYPE: return HorizontalCalendar.MODE_MONTHLY;
+            case PREF_KEY_YEARLY_TYPE: return HorizontalCalendar.MODE_YEARLY;
+            default: return HorizontalCalendar.MODE_DAILY;
+        }
     }
 
     private void onDateCalenderSelectListener(Date startDate, Date endDate) {

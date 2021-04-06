@@ -46,9 +46,6 @@ public class CalendarModeAdapter extends RecyclerView.Adapter<CalendarModeAdapte
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                selectedPosition = holder.getAdapterPosition();
-                notifyDataSetChanged();
-
                 holder.checkBox.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -69,6 +66,11 @@ public class CalendarModeAdapter extends RecyclerView.Adapter<CalendarModeAdapte
 
     public void setOnCalendarModeClickListener(OnCalendarModeClickListener calendarModeClickListener) {
         this.clickListener = calendarModeClickListener;
+    }
+
+    public void refreshSelectedPosition(int selectedPosition){
+        this.selectedPosition = selectedPosition;
+        notifyDataSetChanged();
     }
 
     private String getSelectedMode(int selectedPosition) {

@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -21,11 +22,17 @@ import com.bluekhata.databinding.BottomsheetCalanderModeBinding;
 import com.bluekhata.ui.base.BaseBottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.multicalenderview.HorizontalCalendar;
 
 import javax.inject.Inject;
 
+import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_DAILY_TYPE;
+import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_MONTHLY_TYPE;
+import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_WEEKLY_TYPE;
+import static com.bluekhata.data.local.prefs.AppPreferencesHelper.PREF_KEY_YEARLY_TYPE;
+
 public class CalendarBottomSheetDialog extends BaseBottomSheetDialog<BottomsheetCalanderModeBinding, CalendarModeViewModel>
-implements OnCalendarModeClickListener{
+        implements OnCalendarModeClickListener {
     public static final String TAG = "CalendarBottomSheetDialog";
 
     @Inject
@@ -64,7 +71,7 @@ implements OnCalendarModeClickListener{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater,container,savedInstanceState);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
 
         adapter = new CalendarModeAdapter();
         adapter.setOnCalendarModeClickListener(this);
@@ -72,6 +79,8 @@ implements OnCalendarModeClickListener{
         calanderModeBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         calanderModeBinding.recyclerView.setAdapter(adapter);
 
+        observeData();
+        viewModel.getSelectedCalendarMode();
         return view;
     }
 
@@ -79,9 +88,32 @@ implements OnCalendarModeClickListener{
     public void calendarModeClickListener(String selectedMode) {
         if (modeChangeListener != null) {
             modeChangeListener.onCalendarModeChange(selectedMode);
+            viewModel.setSelectedCalendarMode(getSelectedMode(selectedMode));
             dismiss();
-        }else {
-            Log.e("Exception>","walletClickListener is Null");
+        } else {
+            Log.e("Exception>", "walletClickListener is Null");
+        }
+    }
+
+    private void observeData() {
+        viewModel.selectedCalendarModeLiveData.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                adapter.refreshSelectedPosition(integer);
+            }
+        });
+    }
+
+    private String getSelectedMode(String mode) {
+        switch (mode) {
+            case HorizontalCalendar.MODE_WEEKLY:
+                return PREF_KEY_WEEKLY_TYPE;
+            case HorizontalCalendar.MODE_MONTHLY:
+                return PREF_KEY_MONTHLY_TYPE;
+            case HorizontalCalendar.MODE_YEARLY:
+                return PREF_KEY_YEARLY_TYPE;
+            default:
+                return PREF_KEY_DAILY_TYPE;
         }
     }
 
