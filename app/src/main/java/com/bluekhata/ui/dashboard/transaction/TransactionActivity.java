@@ -3,6 +3,7 @@ package com.bluekhata.ui.dashboard.transaction;
 import android.app.Dialog;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -55,16 +56,23 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
+
 /**
  * Created by aman on 01-09-2018.
  */
 
 public class TransactionActivity extends BaseActivity<ActivityAddTransactionBinding, TransactionViewModel>
         implements View.OnClickListener, NachoTextView.OnChipClickListener, DateOptionListener,
-        CategorySelectionAdapter.OnItemClickListener, RadioGroup.OnCheckedChangeListener {
+        CategorySelectionAdapter.OnItemClickListener, RadioGroup.OnCheckedChangeListener, HasSupportFragmentInjector {
 
     @Inject
     ViewModelProviderFactory factory;
+
+    @Inject
+    DispatchingAndroidInjector<Fragment> childFragmentInjector;
 
     private TransactionViewModel viewModel;
     private ActivityAddTransactionBinding transactionBinding;
@@ -240,6 +248,11 @@ public class TransactionActivity extends BaseActivity<ActivityAddTransactionBind
     @Override
     public void onChipClick(Chip chip, MotionEvent event) {
 //        Toast.makeText(getContext(), transactionBinding.nachoNotes.getChipValues().size() + "", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return childFragmentInjector;
     }
 
     public void setTransactionBottomSheetDismiss(RefreshListOnDismiss bottomSheetDismiss) {

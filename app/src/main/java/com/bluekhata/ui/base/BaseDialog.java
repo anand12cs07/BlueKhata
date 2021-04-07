@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 
-public abstract class BaseDialog extends DialogFragment {
+public abstract class BaseDialog extends DialogFragment{
 
     private BaseActivity mActivity;
 

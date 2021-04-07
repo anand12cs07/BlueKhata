@@ -139,21 +139,27 @@
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/_17ssp" />
 
-                        <com.hootsuite.nachos.NachoTextView
-                            android:id="@+id/nacho_notes"
+                        <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="?BackGroundColorWhite"
-                            android:completionThreshold="1"
-                            android:focusable="true"
-                            android:focusedByDefault="true"
-                            android:gravity="bottom"
-                            android:hint="Add Tags"
-                            android:padding="@dimen/_5sdp">
+                            android:layout_weight="1">
 
-                            <requestFocus />
-                        </com.hootsuite.nachos.NachoTextView>
+                            <com.hootsuite.nachos.NachoTextView
+                                android:id="@+id/nacho_notes"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?BackGroundColorWhite"
+                                android:completionThreshold="1"
+                                android:focusable="true"
+                                android:focusedByDefault="true"
+                                android:gravity="top"
+                                android:hint="Add Tags"
+                                android:padding="@dimen/_5sdp">
+
+                                <requestFocus />
+                            </com.hootsuite.nachos.NachoTextView>
+
+                        </FrameLayout>
 
                         <View
                             android:layout_width="match_parent"

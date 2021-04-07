@@ -37,11 +37,10 @@ public abstract class ActivityBuilder {
             HomeDetailFragmentProvider.class,
             CalendarBottomSheetProvider.class,
             HistoryBottomSheetProvider.class,
-            DateOptionProvider.class,
             HistoryFragmentProvider.class})
     abstract DashBoardActivity bindDashBoardActivity();
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = DateOptionProvider.class)
     abstract TransactionActivity bindTransactionActivity();
 
     @ContributesAndroidInjector(modules = AddCategoryModule.class)
@@ -57,7 +56,6 @@ public abstract class ActivityBuilder {
     abstract UpcomingTransactionActivity bindUpcomingTransactionActivity();
 
     @ContributesAndroidInjector(modules = {
-            TransactionActivityProvider.class,
             DateOptionProvider.class,
             RecursiveModule.class})
     abstract RecursiveTransactionActivity bindRecursiveTransactionActivity();

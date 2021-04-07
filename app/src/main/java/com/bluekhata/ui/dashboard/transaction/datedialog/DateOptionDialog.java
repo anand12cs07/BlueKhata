@@ -2,6 +2,9 @@ package com.bluekhata.ui.dashboard.transaction.datedialog;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -33,13 +36,17 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.AndroidSupportInjection;
+import dagger.android.support.HasSupportFragmentInjector;
 
 /**
  * Created by aman on 13-10-2018.
  */
 
-public class DateOptionDialog extends BaseDialog implements View.OnClickListener {
+public class DateOptionDialog extends BaseDialog implements View.OnClickListener{
+
 
     private static final String TAG = "DateOptionDialog";
 
@@ -89,11 +96,16 @@ public class DateOptionDialog extends BaseDialog implements View.OnClickListener
     };
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        AndroidSupportInjection.inject(this);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         optionBinding = DataBindingUtil.inflate(inflater, R.layout.dialog_date_option, container, false);
         View view = optionBinding.getRoot();
 
-        AndroidSupportInjection.inject(this);
         viewModel = ViewModelProviders.of(this, factory).get(DateOptionViewModel.class);
         optionBinding.setViewModel(viewModel);
 
@@ -226,6 +238,8 @@ public class DateOptionDialog extends BaseDialog implements View.OnClickListener
                     }
                 });
     }
+
+
 
     private class ReminderDialog extends AlertDialog {
         private RadioGroup rdGroup;
