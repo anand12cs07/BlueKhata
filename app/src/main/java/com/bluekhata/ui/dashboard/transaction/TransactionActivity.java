@@ -344,6 +344,7 @@ public class TransactionActivity extends BaseActivity<ActivityAddTransactionBind
             public void onChanged(@Nullable Category category) {
                 selectedCategory = category;
                 setCategoryData(selectedCategory);
+                viewModel.setCategoryList(selectedCategory.getCatType() == 0);
 
                 transactionBinding.toggleCategory.setOnCheckedChangeListener(null);
                 transactionBinding.toggleCategory.check(
