@@ -59,6 +59,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     dataItem.getTransactionWithTag().getTransaction().getTransactionAmount())
             );
 
+            ((VHItem) holder).indicator.setBackgroundColor(context.getResources().getColor(
+                    dataItem.getCategory().getCatType() == 0 ? R.color.colorRoseRed : R.color.colorGreen)
+            );
+
         } else if (holder instanceof VHHeader) {
             ((VHHeader) holder).tvHeader.setText(CalendarUtils.getDateInDdMmmYyyy(
                     dataItem.getTransactionWithTag().getTransaction().getTransactionDate())
@@ -157,12 +161,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         private AppCompatTextView tvItemTitle;
         private AppCompatTextView tvItemTransaction;
         private AppCompatTextView tvMoney;
+        private View indicator;
 
         public VHItem(View itemView) {
             super(itemView);
             tvItemTitle = itemView.findViewById(R.id.tv_title);
             tvItemTransaction = itemView.findViewById(R.id.tv_transaction);
             tvMoney = itemView.findViewById(R.id.tv_money);
+            indicator = itemView.findViewById(R.id.indicator);
         }
     }
 

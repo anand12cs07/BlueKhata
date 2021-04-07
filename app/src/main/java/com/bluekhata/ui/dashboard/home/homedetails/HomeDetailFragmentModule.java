@@ -3,6 +3,9 @@ package com.bluekhata.ui.dashboard.home.homedetails;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bluekhata.ui.dashboard.history.HistoryFragment;
+import com.bluekhata.utils.LinearLayoutManagerWrapper;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -15,8 +18,8 @@ public class HomeDetailFragmentModule {
     }
 
     @Provides
-    LinearLayoutManager provideLinearLayoutManager(HomeDetailFragment fragment){
-        return new LinearLayoutManager(fragment.getContext());
+    LinearLayoutManagerWrapper provideLinearLayoutManager(HomeDetailFragment fragment){
+        return new LinearLayoutManagerWrapper(fragment.getContext());
     }
 
     @Provides

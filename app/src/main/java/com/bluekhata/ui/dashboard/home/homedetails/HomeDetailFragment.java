@@ -1,46 +1,44 @@
 package com.bluekhata.ui.dashboard.home.homedetails;
 
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bluekhata.BR;
 import com.bluekhata.R;
 import com.bluekhata.ViewModelProviderFactory;
 import com.bluekhata.data.model.db.custom.TransactionWithTag;
+import com.bluekhata.data.model.db.custom.TransactionWithTagAndCategory;
 import com.bluekhata.databinding.FragmentTransactionDetailBinding;
 import com.bluekhata.ui.base.BaseFragment;
 import com.bluekhata.ui.dashboard.DashBoardActivity;
-import com.bluekhata.ui.dashboard.transaction.TransactionActivity;
 import com.bluekhata.ui.dashboard.RefreshListOnDismiss;
+import com.bluekhata.ui.dashboard.transaction.TransactionActivity;
+import com.bluekhata.utils.LinearLayoutManagerWrapper;
+import com.bluekhata.utils.PaginationScrollListener;
 import com.bluekhata.utils.RecyclerViewEmptySupport;
 import com.bluekhata.utils.RecyclerViewSwipeHelper;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -64,7 +62,7 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
     HomeDetailAdapter adapter;
 
     @Inject
-    LinearLayoutManager layoutManager;
+    LinearLayoutManagerWrapper layoutManager;
 
     @Inject
     DividerItemDecoration itemDecoration;
@@ -77,6 +75,14 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
     private DashBoardActivity dashBoardActivity;
     private RecyclerViewEmptySupport recyclerView;
     private RecyclerViewSwipeHelper swipeHelper;
+
+
+    private static final int PAGE_START = 0;
+    private boolean isLoading = false;
+    private boolean isLastPage = false;
+    private int TOTAL_PAGES = 3;
+    private int PAGE_SIZE = 15;
+    private int currentPage = PAGE_START;
 
     public static HomeDetailFragment getInstance(long startDate, long endDate, long categoryId) {
         HomeDetailFragment homeDetailFragment = new HomeDetailFragment();
@@ -129,11 +135,13 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
         recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setEmptyView(detailBinding.imgEmpty);
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(getPaginationScrollListener());
         setUpSwipeButtons();
         observeTitle();
         observeSnackBarMessage();
         observeCategoryDetail();
 
+        initScrollValues();
         viewModel.fetchCategoryDetail(
                 getArguments().getLong(SELECTED_CATEGORY_ID),
                 getArguments().getLong(SELECTED_START_DATE),
@@ -206,7 +214,7 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
                                 intent.putExtra("transaction", transactionWithTag.getTransaction());
                                 intent.putExtra("tags", new ArrayList<>(transactionWithTag.getTags()));
                                 intent.putExtra("isToEdit", "update");
-                                startActivityForResult(intent,1001);
+                                startActivityForResult(intent, 1001);
 //                                bottomSheetDialogFragment.setTransactionBottomSheetDismiss(HomeDetailFragment.this);
                             }
                         }
@@ -267,11 +275,88 @@ public class HomeDetailFragment extends BaseFragment<FragmentTransactionDetailBi
         viewModel.getCategoryDetail().observe(this, new Observer<List<TransactionWithTag>>() {
             @Override
             public void onChanged(@Nullable List<TransactionWithTag> list) {
-                adapter.refreshList(list);
+//                adapter.refreshList(list);
+                TOTAL_PAGES = (int) Math.ceil((double) list.size() / PAGE_SIZE);
+                adapter.setList(list);
+                initScrollValues();
+                adapter.setPageList();
+                loadFirstPage();
             }
         });
     }
 
+    private void initScrollValues() {
+        isLoading = false;
+        isLastPage = false;
+        PAGE_SIZE = 15;
+        currentPage = PAGE_START;
+    }
+    private PaginationScrollListener getPaginationScrollListener() {
+        return new PaginationScrollListener(layoutManager) {
+            @Override
+            protected void loadMoreItems() {
+                isLoading = true;
+                currentPage += 1;
+                loadNextPage();
+            }
+
+            @Override
+            public int getTotalPageCount() {
+                return TOTAL_PAGES;
+            }
+
+            @Override
+            public boolean isLastPage() {
+                return isLastPage;
+            }
+
+            @Override
+            public boolean isLoading() {
+                return isLoading;
+            }
+
+            @Override
+            public boolean isSearchApplied() {
+                return true;
+            }
+        };
+    }
+
+    private void loadFirstPage() {
+        int size = getStartIndex();
+        int index = getListLastIndex();
+        List<TransactionWithTag> firstList = adapter.getList().subList(size, index);
+        adapter.addSubList(firstList);
+
+        if (TOTAL_PAGES != 1 && adapter.getList().size() > 0) {
+            adapter.addLoadingFooter();
+        } else isLastPage = true;
+
+    }
+
+    private void loadNextPage() {
+        int size = getStartIndex();
+        int index = getListLastIndex();
+        List<TransactionWithTag> firstList = adapter.getList().subList(size, index);
+
+        adapter.removeLoadingFooter();
+        isLoading = false;
+
+        adapter.addSubList(firstList);
+
+        if (currentPage != TOTAL_PAGES - 1) {
+            adapter.addLoadingFooter();
+        } else isLastPage = true;
+    }
+
+    private int getStartIndex() {
+        return currentPage == 0 ? 0 : PAGE_SIZE * currentPage;
+    }
+
+    private int getListLastIndex() {
+        int value = PAGE_SIZE * (currentPage + 1);
+        return adapter.getList().size() - 1 > value ? value : adapter.getList().size();
+    }
     private void observeSnackBarMessage() {
         viewModel.getSnackBarMessage().observe(this, new Observer<String>() {
             @Override

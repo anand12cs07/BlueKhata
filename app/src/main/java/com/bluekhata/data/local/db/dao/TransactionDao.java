@@ -38,7 +38,7 @@ public interface TransactionDao {
     Double getIncomeByDate(long startDate, long endDate);
 
     @Query("Select * FROM transaction_table WHERE categoryId = :categoryId AND transactionDate BETWEEN :startDate AND :endDate " +
-            " ORDER BY transactionAmount DESC")
+            " ORDER BY transactionDate DESC")
     List<Transaction> getTransactionByDateAndCategoryId(long categoryId, long startDate, long endDate);
 
     @Query("Select * FROM transaction_table WHERE transactionDate BETWEEN :startDate AND :endDate " +

@@ -5,12 +5,13 @@ import android.text.TextUtils;
 import com.bluekhata.data.model.db.Tag;
 import com.bluekhata.data.model.db.Transaction;
 import com.bluekhata.utils.CalendarUtils;
+import com.bluekhata.utils.datasource.GenericDataSource;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionWithTag implements Serializable {
+public class TransactionWithTag implements Serializable, GenericDataSource.AbstractValue {
     private Transaction transaction;
     private List<Tag> tagList;
     private boolean isHeader = false;
