@@ -189,6 +189,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        viewModel.clearCalendarMode();
+    }
+
     private void setUpHeader() {
         viewModel.getHeaderExpense().observe(this, new Observer<Double>() {
             @Override

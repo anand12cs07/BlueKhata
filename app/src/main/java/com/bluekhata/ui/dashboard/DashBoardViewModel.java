@@ -23,9 +23,4 @@ public class DashBoardViewModel extends BaseViewModel<DashBoardNavigator> {
         appTitle.set(title);
     }
 
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-        getDataManager().setSelectedCalenderType(AppPreferencesHelper.PREF_KEY_DAILY_TYPE);
-    }
 }

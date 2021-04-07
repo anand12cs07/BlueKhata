@@ -3,6 +3,7 @@ package com.bluekhata.ui.dashboard.home;
 import androidx.lifecycle.MutableLiveData;
 
 import com.bluekhata.data.DataManager;
+import com.bluekhata.data.local.prefs.AppPreferencesHelper;
 import com.bluekhata.data.model.db.Category;
 import com.bluekhata.data.model.db.custom.TransactionWithCategory;
 import com.bluekhata.ui.base.BaseViewModel;
@@ -137,5 +138,9 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 
     public MutableLiveData<Double> getHeaderIncome() {
         return headerIncome;
+    }
+
+    public void clearCalendarMode(){
+        getDataManager().setSelectedCalenderType(AppPreferencesHelper.PREF_KEY_DAILY_TYPE);
     }
 }
